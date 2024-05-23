@@ -2,13 +2,23 @@
 
 import { FC, useState } from "react";
 import Button from "@/components/ui/Button";
+import { signIn } from "next-auth/react";
 
 interface pageProps {}
 
 const Page: FC<pageProps> = ({}) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  async function loginWithGoogle() {}
+  async function loginWithGoogle() {
+    setIsLoading(true)
+    try {
+      await signIn('google')
+    } catch (err) {
+
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <>
