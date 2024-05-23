@@ -26,9 +26,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Va
     isLoading?: boolean
 }
 
-
-const button: FC<ButtonProps> = ({}) => {
-  return <div>Button</div>
+const button: FC<ButtonProps> = ({ className, children, variant, isLoading, size, ...props }) => {
+  return <button className='' disabled={isLoading} {...props}>
+    {isLoading ? <Loader2 /> : null}
+  </button>
 }
 
 export default button
