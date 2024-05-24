@@ -45,12 +45,12 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
     }
   };
 
-  const onSubmit = (data: FormData) => {
+  const submitData = (data: FormData) => {
     addFriend(data.email);
   };
 
   return (
-    <form className="max-w-sm" onSubmit={handleSubmit(onSubmit)}>
+    <form className="max-w-sm" onSubmit={handleSubmit(submitData)}>
       <label
         htmlFor="email"
         className="block text-sm font-medium leading-6 text-gray-900"
