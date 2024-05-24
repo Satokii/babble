@@ -1,13 +1,52 @@
 "use client"
 
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Button from './ui/Button'
+import { addFriendValidator } from '@/lib/validations/add-friend'
+import axios, { AxiosError } from 'axios'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 interface AddFriendFormProps {
   
 }
 
+type FormData = z.infer<typeof addFriendValidator>
+
 const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
+  
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const { register, handleSubmit, setError } = useForm<FormData>({
+    resolver: zodResolver(addFriendValidator)
+  })
+
+  const addFriend = async (email: string) => {
+    try {
+      const validatedEmail = addFriendValidator.parse({ email })
+
+      await axios.post('/api/friends/add', {
+        email: validatedEmail
+      })
+
+      setShowSuccess(true)
+
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        setError('email', { message: err.message })
+        return
+      }
+
+      if (err instanceof AxiosError) {
+        setError('email', { message: err.response?.data})
+        return
+      }
+
+      setError('email', { message: 'Sorry, something went wrong. Please try again.' })
+    }
+  }
+
   return <form className='max-w-sm'>
     <label htmlFor="email" className='block text-sm font-medium leading-6 text-gray-900'>
         Add Friend by Email
