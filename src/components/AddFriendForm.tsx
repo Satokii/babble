@@ -47,6 +47,10 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
     }
   }
 
+  const onSubmit = (data: FormData) => {
+    addFriend(data.email)
+  }
+
   return <form className='max-w-sm'>
     <label htmlFor="email" className='block text-sm font-medium leading-6 text-gray-900'>
         Add Friend by Email
