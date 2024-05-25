@@ -3,19 +3,19 @@ import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google"
 
-const getGoogleCredentials = () => {
-    const clientId = process.env.GOOGLE_CLIENT_ID
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET
+// const getGoogleCredentials = () => {
+//     const clientId = process.env.GOOGLE_CLIENT_ID
+//     const clientSecret = process.env.GOOGLE_CLIENT_SECRET
 
-    if (!clientId || clientId.length === 0) {
-        throw new Error('Missing GOOGLE_CLIENT_ID')
-    }
-    if (!clientSecret || clientSecret.length === 0) {
-        throw new Error('GOOGLE_CLIENT_SECRET')
-    }
+//     if (!clientId || clientId.length === 0) {
+//         throw new Error('Missing GOOGLE_CLIENT_ID')
+//     }
+//     if (!clientSecret || clientSecret.length === 0) {
+//         throw new Error('GOOGLE_CLIENT_SECRET')
+//     }
 
-    return {clientId, clientSecret}
-}
+//     return {clientId, clientSecret}
+// }
 
 export const authOptions: NextAuthOptions = {
     adapter: UpstashRedisAdapter(db),
@@ -27,14 +27,17 @@ export const authOptions: NextAuthOptions = {
     },
     providers: [
         GoogleProvider({
-            clientId: getGoogleCredentials().clientId,
-            clientSecret: getGoogleCredentials().clientSecret
+            // clientId: getGoogleCredentials().clientId,
+            // clientSecret: getGoogleCredentials().clientSecret
+            clientId: `${process.env.GOOGLE_CLIENT_ID}`,
+            clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`
         })
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt ({ token, user }) {
-            const dbUser = (await db.get(`user: ${token.id}`)) as User | null
 
+            const dbUser = (await db.get(`user: ${token.id}`)) as User | null
             if (!dbUser) {
                 token.id = user!.id
                 return token
@@ -47,15 +50,15 @@ export const authOptions: NextAuthOptions = {
                 picture: dbUser.image,
             }
         },
-        async session({ session, token }) {
-            if (token) {
-                session.user.id = token.id
-                session.user.name = token.name
-                session.user.email = token.email
-                session.user.image = token.picture
-            }
-            return session
-        },
+        // async session({ session, token }) {
+        //     if (token) {
+        //         session.user.id = token.id
+        //         session.user.name = token.name
+        //         session.user.email = token.email
+        //         session.user.image = token.picture
+        //     }
+        //     return session
+        // },
         redirect() {
             return '/dashboard'
         }

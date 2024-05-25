@@ -1,5 +1,6 @@
 import SignOutBtn from '@/components/SignOutBtn'
 import { authOptions } from '@/lib/auth'
+import { db } from '@/lib/db'
 import { getServerSession } from 'next-auth'
 import { FC } from 'react'
 
@@ -12,6 +13,7 @@ const Page = async ({}) => {
   return (
     <>
         <div>Dashboard Page</div>
+        <p>user {session?.user.email}</p>
         <SignOutBtn />
     </>
   ) 

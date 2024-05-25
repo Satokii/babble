@@ -14,6 +14,7 @@ const Page: FC<pageProps> = ({}) => {
     setIsLoading(true);
     try {
       await signIn("google");
+      console.log('success')
     } catch (err) {
       toast.error("Error signing in. Please try again.");
     } finally {
