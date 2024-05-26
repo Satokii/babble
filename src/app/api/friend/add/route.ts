@@ -1,4 +1,6 @@
+import { authOptions } from "@/lib/auth";
 import { addFriendValidator } from "@/lib/validations/add-friend";
+import { getServerSession } from "next-auth";
 
 export async function POST(req: Request) {
   try {
@@ -15,11 +17,24 @@ export async function POST(req: Request) {
         cache: "no-store",
       }
     );
-    const data = await RESTResponse.json() as { result: string }
+    const data = await RESTResponse.json() as { result: string | null }
 
     const idToAdd = data.result
-    console.log(idToAdd)
-    return new Response('OK')
+
+    if (!idToAdd) {
+      return new Response('This user does not exist.', { status: 400 })
+    }
+
+    const session = await getServerSession(authOptions)
+
+    if (!session) {
+      return new Response('Unauthorized', { status: 401 })
+    }
+
+    if (idToAdd === session.user.id) {
+      return new Response('Cannot send a friend request to yourself.', { status: 400 } )
+    }
+
 
   } catch (error) {}
 }
