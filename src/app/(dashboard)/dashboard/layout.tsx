@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
+import Image from "next/image";
 
 interface LayoutProps {
   children: ReactNode;
@@ -69,6 +70,20 @@ const Layout = async ({ children }: LayoutProps) => {
                   );
                 })}
               </ul>
+            </li>
+
+            <li className="-mx-6 mt-auto flex items-center">
+                <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
+                    <div className="relative h-8 w-8 bg-gray-50">
+                        <Image 
+                            fill
+                            referrerPolicy='no-referrer'
+                            className='rounded-full'
+                            src={session?.user.image || ''}
+                            alt='Profile picture'
+                        />
+                    </div>
+                </div>
             </li>
           </ul>
         </nav>
