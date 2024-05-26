@@ -1,4 +1,4 @@
-import { Icons } from "@/components/Icons";
+import { Icon, Icons } from "@/components/Icons";
 import { authOptions } from "@/lib/auth";
 import { Link } from "lucide-react";
 import { getServerSession } from "next-auth";
@@ -7,6 +7,13 @@ import { FC, ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
+}
+
+interface SidebarOption {
+    id: number
+    name: string
+    href: string
+    icon: Icon
 }
 
 const Layout = async ({ children }: LayoutProps) => {
