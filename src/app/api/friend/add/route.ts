@@ -15,8 +15,10 @@ export async function POST(req: Request) {
         cache: "no-store",
       }
     );
-    const data = await RESTResponse.json()
-    console.log(data)
+    const data = await RESTResponse.json() as { result: string }
+
+    const idToAdd = data.result
+    console.log(idToAdd)
     return new Response('OK')
 
   } catch (error) {}
