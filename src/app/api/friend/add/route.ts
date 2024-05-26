@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     )) as 0 | 1;
 
     if (isAlreadyAdded) {
-      return new Response("You have already added this user.", {
+      return new Response("You have already sent a friend request to this user.", {
         status: 400,
       });
     }
