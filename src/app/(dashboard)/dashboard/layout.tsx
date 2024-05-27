@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
 import Image from "next/image";
+import SignOutBtn from "@/components/SignOutBtn";
 
 interface LayoutProps {
   children: ReactNode;
@@ -90,6 +91,8 @@ const Layout = async ({ children }: LayoutProps) => {
                       <span className="text-xs text-zinc-400" aria-hidden="true">{session.user.email}</span>
                     </div>
                 </div>
+
+                <SignOutBtn className="h-full aspect-square" />
             </li>
           </ul>
         </nav>
