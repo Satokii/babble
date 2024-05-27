@@ -80,7 +80,7 @@ const Layout = async ({ children }: LayoutProps) => {
                             referrerPolicy='no-referrer'
                             className='rounded-full'
                             src={session?.user.image || ''}
-                            alt='Profile picture'
+                            alt='User profile picture'
                         />
                     </div>
                 </div>
