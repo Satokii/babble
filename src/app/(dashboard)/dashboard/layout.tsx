@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
 import Image from "next/image";
 import SignOutBtn from "@/components/SignOutBtn";
+import FriendRequestMenu from "@/components/FriendRequestMenu";
 
 interface LayoutProps {
   children: ReactNode;
@@ -71,6 +72,10 @@ const Layout = async ({ children }: LayoutProps) => {
                   );
                 })}
               </ul>
+            </li>
+
+            <li>
+              <FriendRequestMenu />
             </li>
 
             <li className="-mx-6 mt-auto flex items-center">
