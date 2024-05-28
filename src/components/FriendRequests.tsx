@@ -1,12 +1,20 @@
-"use client"
+"use client";
 
-import { FC, useState } from 'react'
+import { FC, useState } from "react";
 
-interface FriendRequestsProps {}
-
-const FriendRequests: FC<FriendRequestsProps> = ({}) => {
-    const [friendRequests, setfriendRequests] = useState(incomingFriendRequests)
-  return <div>FriendRequests</div>
+interface FriendRequestsProps {
+  incomingFriendRequests: IncomingFriendRequest[];
+  sessionId: string;
 }
 
-export default FriendRequests
+const FriendRequests: FC<FriendRequestsProps> = ({
+  incomingFriendRequests,
+  sessionId,
+}) => {
+  const [friendRequests, setfriendRequests] = useState<IncomingFriendRequest[]>(
+    incomingFriendRequests
+  );
+  return <div>FriendRequests</div>;
+};
+
+export default FriendRequests;
