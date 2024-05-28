@@ -75,7 +75,7 @@ const Layout = async ({ children }: LayoutProps) => {
             </li>
 
             <li>
-              <FriendRequestMenu />
+              <FriendRequestMenu sessionId={session.user.id} INITIAL_COUNT={requestCount} />
             </li>
 
             <li className="-mx-6 mt-auto flex items-center">
