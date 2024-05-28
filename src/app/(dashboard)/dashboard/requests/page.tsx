@@ -14,14 +14,23 @@ const page = async () => {
     `user:${session.user.id}:incoming_friend_requests`
   )) as string[];
 
-  const userFriendReq = await Promise.all(userFriendReqIds.map(async (senderId) => {
-    const sender = await fetchRedis("get", `user${senderId}`) as User
-    return {
+  const userFriendReq = await Promise.all(
+    userFriendReqIds.map(async (senderId) => {
+      const sender = (await fetchRedis("get", `user${senderId}`)) as User;
+      return {
         senderId,
-        senderEmail: sender.email
-    }
-  }))
-  return <div>page</div>;
+        senderEmail: sender.email,
+      };
+    })
+  );
+  return (
+    <main className="pt-8">
+      <h1 className="font-bold text-5xl mb-8">Add Friend</h1>
+      <div className="flex flex-col gap-4">
+        
+      </div>
+    </main>
+  );
 };
 
 export default page;
