@@ -21,19 +21,7 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
-    //   if (user) {
-    //     token.id = user.id;
-    //   } else {
-    //     const dbUser = (await fetchRedis("get", `user:${token.id}`)) as
-    //       | string
-    //       | null;
-    //     if (dbUser) {
-    //       token.id = dbUser.id;
-    //       token.name = dbUser.name;
-    //       token.email = dbUser.email;
-    //       token.picture = dbUser.image;
-    //     }
-    //   }
+
         const dbUserResult = (await fetchRedis("get", `user:${token.id}`)) as
           | string
           | null;
@@ -46,13 +34,6 @@ export const authOptions: NextAuthOptions = {
           }
 
           const dbUser = JSON.parse(dbUserResult) as User
-
-        //   console.log("dbUser", {
-        //     id: dbUser.id,
-        //   name: dbUser.name,
-        //   email: dbUser.email,
-        //   picture: dbUser.image
-        //   })
 
         return {
           id: dbUser.id,

@@ -19,7 +19,7 @@ const page = async () => {
     userFriendReqIds.map(async (senderId) => {
       const sender = (await fetchRedis("get", `user:${senderId}`)) as string;
       const parsedSender = JSON.parse(sender) as User
-      console.log("sender", sender)
+      
       return {
         senderId,
         senderEmail: parsedSender.email,
