@@ -15,9 +15,10 @@ const FriendRequests: FC<FriendRequestsProps> = ({
   const [friendRequests, setfriendRequests] = useState<IncomingFriendRequest[]>(
     incomingFriendRequests
   );
+  console.log(friendRequests)
   return (
     <>
-      {FriendRequests.length === 0 ? (
+      {friendRequests.length === 0 ? (
         <p className="text-sm text-zinc-500">Nothing to see here</p>
       ) : (
         friendRequests.map((request) => (
