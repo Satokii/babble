@@ -27,6 +27,14 @@ const FriendRequests: FC<FriendRequestsProps> = ({
     router.refresh()
   }
 
+  const rejectFriendReq = async (senderId: string) => {
+    await axios.post("/api/requests/deny", { id: senderId })
+
+    setFriendRequests((allRequests) => allRequests.filter((request) => request.senderId !== senderId))
+
+    router.refresh()
+  }
+
   return (
     <>
       {friendRequests.length === 0 ? (
