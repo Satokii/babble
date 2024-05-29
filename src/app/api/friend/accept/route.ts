@@ -40,6 +40,18 @@ export async function POST(req: Request) {
       );
     }
 
+    // ADD FRIEND TO CURRENT USER FRIEND LIST
+    await db.sadd(`user:${session.user.id}:friends`, idToAdd);
+
+    // ADD USER TO FRIEND'S FRIEND LIST
+    await db.sadd(`user:${idToAdd}:friend`, session.user.id);
+
+    // REMOVE FRIEND REQUEST FROM CURRENT USER REQUESTS
+    await db.srem(`user:${session.user.id}:incoming_friend_requests`, idToAdd);
+
+    // REMOVE FRIEND REQUEST FROM FRIEND'S FRIEND REQUESTS
+    await db.srem(`user:${idToAdd}:outbound_friend_requests`, session.user.id);
+
     return new Response("OK");
   } catch (err) {}
 }
