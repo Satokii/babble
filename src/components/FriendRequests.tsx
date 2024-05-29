@@ -15,7 +15,6 @@ const FriendRequests: FC<FriendRequestsProps> = ({
   const [friendRequests, setfriendRequests] = useState<IncomingFriendRequest[]>(
     incomingFriendRequests
   );
-  console.log(friendRequests)
   return (
     <>
       {friendRequests.length === 0 ? (
