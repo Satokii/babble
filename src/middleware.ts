@@ -1,11 +1,21 @@
+import { getToken } from "next-auth/jwt";
 import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
 export default withAuth(
-    async function middleware(req) {
+  async function middleware(req) {
+    const pathname = req.nextUrl.pathname;
 
-    }
-)
+    const isUserAuthorised = await getToken({ req });
+    const isLoginPage = pathname.startsWith("/login");
+
+    const sensitiveRoutes = ["/dashboard"];
+    const isAccessingSensitiveRoute = sensitiveRoutes.some((route) =>
+      pathname.startsWith(route)
+    );
+  }
+);
 
 export const config = {
-    matcher: ["/", "/login", "/dashboard/:path*"]
-}
+  matcher: ["/", "/login", "/dashboard/:path*"],
+};
