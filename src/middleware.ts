@@ -13,6 +13,29 @@ export default withAuth(
     const isAccessingSensitiveRoute = sensitiveRoutes.some((route) =>
       pathname.startsWith(route)
     );
+
+    if (isLoginPage) {
+      if (isUserAuthorised) {
+        return NextResponse.redirect(new URL("/dashboard", req.url));
+      }
+
+      return NextResponse.next();
+    }
+
+    if (!isUserAuthorised && isAccessingSensitiveRoute) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    if (pathname === "/") {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+  },
+  {
+    callbacks: {
+      async authorized() {
+        return true;
+      },
+    },
   }
 );
 
