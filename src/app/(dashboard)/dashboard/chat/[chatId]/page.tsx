@@ -1,6 +1,7 @@
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { messageArraySchema } from "@/lib/validations/message";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
@@ -12,17 +13,19 @@ interface PageProps {
 
 async function getChatMessages(chatId: string) {
   try {
-    const messages: string[] = await fetchRedis(
+    const dbMessagesData: string[] = await fetchRedis(
       "zrange",
       `chat:${chatId}:messages`,
       0,
       -1
     );
 
-  const dbMessages = messages.map((message) => JSON.parse(message) as Message)
-
-  const reversedDbMessages = dbMessages.reverse()
-  
+    const parsedMessages = dbMessagesData.map(
+      (message) => JSON.parse(message) as Message
+    );
+    const reversedMessages = parsedMessages.reverse();
+    const messages = messageArraySchema.parse(reversedMessages);
+    return messages;
   } catch (err) {
     notFound();
   }
