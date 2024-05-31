@@ -53,9 +53,11 @@ const Layout = async ({ children }: LayoutProps) => {
           <Icons.Logo className=" h-6 w-auto" />
         </Link>
 
-        <div className="text-xs font-semibold leading-6 text-gray-400">
-          Chats
-        </div>
+        {friends.length > 0 ? (
+          <div className="text-xs font-semibold leading-6 text-gray-400">
+            Chats
+          </div>
+        ) : null}
 
         <nav className="flex flex-1 flex-col">
           <ul role="list" className="flex flex-1 flex-col gap-y-7">
