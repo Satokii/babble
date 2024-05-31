@@ -1,13 +1,14 @@
 "use client";
 
 import { Message } from "@/lib/validations/message";
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 
 interface MessagesProps {
-    existingMessages: Message[]
+  existingMessages: Message[];
 }
 
 const Messages: FC<MessagesProps> = ({ existingMessages }) => {
+  const [messages, setMessages] = useState<Message[]>(existingMessages);
   const scrollDownRef = useRef<HTMLDivElement | null>(null);
   return (
     <div
