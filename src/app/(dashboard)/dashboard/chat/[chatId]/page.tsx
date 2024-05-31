@@ -17,6 +17,8 @@ const page = async ({ params }: PageProps) => {
     notFound()
   }
 
+  const { user } = session
+
   return <div>{params.chatId}</div>;
 };
 
