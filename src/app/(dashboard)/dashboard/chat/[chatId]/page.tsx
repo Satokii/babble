@@ -1,3 +1,6 @@
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 import { FC } from "react";
 
 interface PageProps {
@@ -6,7 +9,14 @@ interface PageProps {
   }
 }
 
-const page: FC<PageProps> = ({ params }: PageProps) => {
+const page = async ({ params }: PageProps) => {
+  const { chatId } = params
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    notFound()
+  }
+
   return <div>{params.chatId}</div>;
 };
 
