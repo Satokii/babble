@@ -1,3 +1,4 @@
+import Messages from "@/components/Messages";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -50,7 +51,7 @@ const page = async ({ params }: PageProps) => {
   const chatFriendId = user.id === userId1 ? userId2 : userId1;
   const chatFriend = (await db.get(`user:${chatFriendId}`)) as User;
 
-  const initialMessages = await getChatMessages(chatId);
+  const existingMessages = await getChatMessages(chatId);
 
   return (
     <div className="flex-1 justify-between flex flex-col h-full max-h-[calc(100vh-6rem)]">
@@ -77,6 +78,7 @@ const page = async ({ params }: PageProps) => {
           </div>
         </div>
       </div>
+      <Messages existingMessages={existingMessages} />
     </div>
   );
 };
