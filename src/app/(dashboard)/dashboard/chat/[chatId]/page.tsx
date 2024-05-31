@@ -78,7 +78,7 @@ const page = async ({ params }: PageProps) => {
           </div>
         </div>
       </div>
-      <Messages existingMessages={existingMessages} />
+      <Messages existingMessages={existingMessages} sessionId={session.user.id} />
     </div>
   );
 };
