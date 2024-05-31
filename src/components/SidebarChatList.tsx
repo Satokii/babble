@@ -24,7 +24,14 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends }) => {
     <ul
       role="list"
       className="max-h-[25rem] overflow-y-auto -mx-2 space-y-1"
-    ></ul>
+    >
+        {friends.sort().map((friend) => {
+            const unreadMessagesCount = unreadMessages.filter((unreadMessage) => {
+                return unreadMessage.senderId === friend.id
+            }).length
+            return <li></li>
+        })}
+    </ul>
   );
 };
 
