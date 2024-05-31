@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { chatHrefConstructor } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
@@ -37,7 +37,9 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                 sessionId,
                 friend.id
               )}`}
-            >Example Chat</a>
+            >
+              {friend.name}
+            </a>
           </li>
         );
       })}
