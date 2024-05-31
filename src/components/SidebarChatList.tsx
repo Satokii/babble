@@ -39,6 +39,11 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
               )}`}
             >
               {friend.name}
+              {unreadMessagesCount > 0 ? (
+                <div className="bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center">
+                  {unreadMessagesCount}
+                </div>
+              ) : null}
             </a>
           </li>
         );
