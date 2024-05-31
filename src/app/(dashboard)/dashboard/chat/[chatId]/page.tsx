@@ -1,7 +1,6 @@
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 
 interface PageProps {
   params: {
@@ -18,6 +17,11 @@ const page = async ({ params }: PageProps) => {
   }
 
   const { user } = session
+  const [userId1, userId2] = chatId.split("--")
+
+  if (user.id !== userId1 && user.id !== userId2) {
+    notFound()
+  }
 
   return <div>{params.chatId}</div>;
 };
