@@ -12,3 +12,8 @@ interface Message {
     text: string
     timestamp: number
 }
+
+interface Chat {
+    id: string
+    messages: Message[]
+}
