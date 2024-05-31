@@ -1,11 +1,13 @@
-import { FC } from 'react'
+import { FC } from "react";
 
-interface pageProps {
-  
+interface PageProps {
+  params: {
+    chatId: string
+  }
 }
 
-const page: FC<pageProps> = ({}) => {
-  return <div>page</div>
-}
+const page: FC<PageProps> = ({ params }: PageProps) => {
+  return <div>{params.chatId}</div>;
+};
 
-export default page
+export default page;
