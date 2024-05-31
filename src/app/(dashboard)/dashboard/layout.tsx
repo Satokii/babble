@@ -8,6 +8,7 @@ import Image from "next/image";
 import SignOutBtn from "@/components/SignOutBtn";
 import FriendRequestMenu from "@/components/FriendRequestMenu";
 import { fetchRedis } from "@/helpers/redis";
+import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 
 interface LayoutProps {
   children: ReactNode;
@@ -35,6 +36,8 @@ const Layout = async ({ children }: LayoutProps) => {
   if (!session) {
     notFound();
   }
+
+  const friends = await getFriendsByUserId(session.user.id);
 
   const requestCount = (
     (await fetchRedis(
