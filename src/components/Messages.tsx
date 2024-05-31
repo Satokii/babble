@@ -40,7 +40,22 @@ const Messages: FC<MessagesProps> = ({ existingMessages, sessionId }) => {
                     "order-2 items-start": !isCurrentUser,
                   }
                 )}
-              ></div>
+              >
+                <span
+                  className={cn("px-4 py-2 rounded-lg inline-block", {
+                    "bg-indigo-600 text-white": isCurrentUser,
+                    "bg-gray-200 text-gray-900:": !isCurrentUser,
+                    "rounded-br-none": !subsequentUserMessages && isCurrentUser,
+                    "rounded-bl-none":
+                      !subsequentUserMessages && !isCurrentUser,
+                  })}
+                >
+                  {message.text}{" "}
+                  <span className="ml-2 text-xs text-gray-400">
+                    {message.timestamp}
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
         );
