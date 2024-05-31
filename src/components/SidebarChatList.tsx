@@ -1,3 +1,5 @@
+"use client"
+
 import { chatHrefConstructor } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
