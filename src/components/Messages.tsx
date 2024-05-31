@@ -28,7 +28,21 @@ const Messages: FC<MessagesProps> = ({ existingMessages, sessionId }) => {
           <div
             key={`${message.id}-${message.timestamp}`}
             className="chat-message"
-          ></div>
+          >
+            <div
+              className={cn("flex items-end", { "justify-end": isCurrentUser })}
+            >
+              <div
+                className={cn(
+                  "flex flex-col space-y-2 text-base max-w-xs mx-2",
+                  {
+                    "order-1 items-end": isCurrentUser,
+                    "order-2 items-start": !isCurrentUser,
+                  }
+                )}
+              ></div>
+            </div>
+          </div>
         );
       })}
     </div>
