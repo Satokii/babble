@@ -11,6 +11,7 @@ interface ChatTextBoxProps {
 const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [messageContent, setMessageContent] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const sendMessage = () => {};
 
   return (
@@ -41,7 +42,7 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
         </div>
         <div className="absolute right-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
             <div className="flex-shrink-0">
-                <Button onClick={sendMessage} type="submit">Post</Button>
+                <Button onClick={sendMessage} isLoading={isLoading} type="submit">Post</Button>
             </div>
         </div>
       </div>
