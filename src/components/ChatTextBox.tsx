@@ -1,12 +1,13 @@
 "use client"
 
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 interface ChatTextBoxProps {}
 
 const ChatTextBox: FC<ChatTextBoxProps> = ({}) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const [messageContent, setMessageContent] = useState<string>("")
 
   return (
     <div className="border-t border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
