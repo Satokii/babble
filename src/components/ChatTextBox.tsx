@@ -8,6 +8,7 @@ interface ChatTextBoxProps {}
 const ChatTextBox: FC<ChatTextBoxProps> = ({}) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [messageContent, setMessageContent] = useState<string>("")
+  const sendMessage = () => {}
 
   return (
     <div className="border-t border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
