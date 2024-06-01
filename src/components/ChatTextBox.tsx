@@ -4,7 +4,7 @@ import { FC, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 interface ChatTextBoxProps {
-    chatFriend: User
+  chatFriend: User;
 }
 
 const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
@@ -29,6 +29,15 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
           onChange={(e) => setMessageContent(e.target.value)}
           placeholder={`Send a message to ${chatFriend.name}`}
         />
+        <div
+          className="py-2"
+          aria-hidden="true"
+          onClick={() => textareaRef.current?.focus()}
+        >
+          <div className="py-px">
+            <div className="h-9" />
+          </div>
+        </div>
       </div>
     </div>
   );
