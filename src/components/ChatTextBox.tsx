@@ -4,17 +4,29 @@ import { FC, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Button from "./ui/Button";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 interface ChatTextBoxProps {
   chatFriend: User;
-  chatId: string
+  chatId: string;
 }
 
 const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend, chatId }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [messageContent, setMessageContent] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const sendMessage = () => {};
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const sendMessage = async () => {
+    setIsLoading(true);
+    try {
+      await axios.post("/api/message/send", { text: messageContent, chatId });
+      setMessageContent("");
+      textareaRef.current?.focus();
+    } catch (err) {
+      toast.error("Could not send message. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="border-t border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
@@ -43,9 +55,11 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend, chatId }) => {
           </div>
         </div>
         <div className="absolute right-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
-            <div className="flex-shrink-0">
-                <Button onClick={sendMessage} isLoading={isLoading} type="submit">Post</Button>
-            </div>
+          <div className="flex-shrink-0">
+            <Button onClick={sendMessage} isLoading={isLoading} type="submit">
+              Post
+            </Button>
+          </div>
         </div>
       </div>
     </div>
