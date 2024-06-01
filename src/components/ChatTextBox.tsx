@@ -2,6 +2,7 @@
 
 import { FC, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import Button from "./ui/Button";
 
 interface ChatTextBoxProps {
   chatFriend: User;
@@ -37,6 +38,11 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
           <div className="py-px">
             <div className="h-9" />
           </div>
+        </div>
+        <div className="absolute right-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
+            <div className="flex-shrink-0">
+                <Button onClick={sendMessage} type="submit">Post</Button>
+            </div>
         </div>
       </div>
     </div>
