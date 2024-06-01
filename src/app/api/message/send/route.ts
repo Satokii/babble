@@ -1,8 +1,9 @@
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Message } from "@/lib/validations/message";
+import { Message, messageSchema } from "@/lib/validations/message";
 import { getServerSession } from "next-auth";
+import { nanoid } from 'nanoid'
 
 export async function POST(req: Request) {
   try {
@@ -40,9 +41,13 @@ export async function POST(req: Request) {
 
     const timestamp = Date.now();
     const messageData: Message = {
-        id,
-        senderId
+        id: nanoid(),
+        senderId: session.user.id,
+        text,
+        timestamp
     }
+
+    const message = messageSchema.parse(messageData)
 
     await db.zadd(`chat:${chatId}:messages`, {
       score: timestamp,
