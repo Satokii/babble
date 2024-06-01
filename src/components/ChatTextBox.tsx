@@ -3,12 +3,14 @@
 import { FC, useRef, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import Button from "./ui/Button";
+import axios from "axios";
 
 interface ChatTextBoxProps {
   chatFriend: User;
+  chatId: string
 }
 
-const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend }) => {
+const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend, chatId }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [messageContent, setMessageContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false)
