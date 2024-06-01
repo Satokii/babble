@@ -28,5 +28,11 @@ export async function POST(req: Request) {
     if (!isFriend) {
       return new Response("unauthorized", { status: 401 });
     }
+
+    const senderDb = (await fetchRedis(
+      "get",
+      `user:${session.user.id}`
+    )) as string;
+    const sender = JSON.parse(senderDb) as User;
   } catch (err) {}
 }
