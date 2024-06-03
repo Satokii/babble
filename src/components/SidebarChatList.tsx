@@ -48,6 +48,8 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       toast.custom((t) => (
         <NewMessageToast t={t} sessionId={sessionId} senderId={message.senderId} senderImage={message.senderImage} senderName={message.senderName} senderMessage={message.text} />
       ))
+
+      setUnreadMessages((prevMessages) => [...prevMessages, message])
     };
 
     const newFriendHandler = () => {
