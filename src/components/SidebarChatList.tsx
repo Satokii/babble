@@ -4,6 +4,7 @@ import { pusherClient } from "@/lib/pusher";
 import { chatHrefConstructor, toPusherKey } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 interface SidebarChatListProps {
   friends: User[];
@@ -11,8 +12,8 @@ interface SidebarChatListProps {
 }
 
 interface ExtendedMessage extends Message {
-  senderImage: string
-  senderName: string
+  senderImage: string;
+  senderName: string;
 }
 
 const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
@@ -34,7 +35,14 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
     pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
     pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
-    const newChatHandler = () => {};
+    const newChatHandler = (message: ExtendedMessage) => {
+      const sendNotification =
+        pathname !==
+        `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
+
+      if (!sendNotification) {
+        return;
+      }
 
     const newFriendHandler = () => {
       router.refresh();
@@ -47,7 +55,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
     };
-  });
+  }, [router, sessionId]);
 
   return (
     <ul role="list" className="max-h-[25rem] overflow-y-auto -mx-2 space-y-1">
