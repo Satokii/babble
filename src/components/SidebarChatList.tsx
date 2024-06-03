@@ -46,10 +46,17 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       }
 
       toast.custom((t) => (
-        <NewMessageToast t={t} sessionId={sessionId} senderId={message.senderId} senderImage={message.senderImage} senderName={message.senderName} senderMessage={message.text} />
-      ))
+        <NewMessageToast
+          t={t}
+          sessionId={sessionId}
+          senderId={message.senderId}
+          senderImage={message.senderImage}
+          senderName={message.senderName}
+          senderMessage={message.text}
+        />
+      ));
 
-      setUnreadMessages((prevMessages) => [...prevMessages, message])
+      setUnreadMessages((prevMessages) => [...prevMessages, message]);
     };
 
     const newFriendHandler = () => {
@@ -62,6 +69,9 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
     return () => {
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
+
+      pusherClient.unbind("new_message", newChatHandler);
+      pusherClient.unbind("new_friend", newFriendHandler);
     };
   }, [pathname, router, sessionId]);
 
