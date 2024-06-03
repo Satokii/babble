@@ -15,7 +15,12 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend, chatId }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [messageContent, setMessageContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const sendMessage = async () => {
+    if (!messageContent) {
+      return
+    }
+
     setIsLoading(true);
     try {
       await axios.post("/api/message/send", { text: messageContent, chatId });
