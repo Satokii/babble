@@ -7,8 +7,9 @@ interface NewMessageToastProps {
   t: Toast;
   sessionId: string;
   senderId: string;
-  senderImage: string
-  senderName: string
+  senderImage: string;
+  senderName: string;
+  senderMessage: string;
 }
 
 const NewMessageToast: FC<NewMessageToastProps> = ({
@@ -16,7 +17,8 @@ const NewMessageToast: FC<NewMessageToastProps> = ({
   sessionId,
   senderId,
   senderImage,
-  senderName
+  senderName,
+  senderMessage,
 }) => {
   return (
     <div
@@ -44,6 +46,10 @@ const NewMessageToast: FC<NewMessageToastProps> = ({
                 alt={`${senderName} profile image`}
               />
             </div>
+          </div>
+          <div className="ml-3 flex-1">
+            <p className="text-sm font-medium text-gray-900">{senderName}</p>
+            <p className="mt-1 text-sm text-gray-500">{senderMessage}</p>
           </div>
         </div>
       </a>
