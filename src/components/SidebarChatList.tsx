@@ -43,6 +43,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       if (!sendNotification) {
         return;
       }
+    };
 
     const newFriendHandler = () => {
       router.refresh();
