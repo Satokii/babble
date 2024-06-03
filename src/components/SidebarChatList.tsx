@@ -5,6 +5,7 @@ import { chatHrefConstructor, toPusherKey } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import NewMessageToast from "./NewMessageToast";
 
 interface SidebarChatListProps {
   friends: User[];
@@ -43,6 +44,10 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       if (!sendNotification) {
         return;
       }
+
+      toast.custom((t) => (
+        <NewMessageToast t={t} sessionId={sessionId} senderId={message.senderId} senderImage={message.senderImage} senderName={message.senderName} senderMessage={message.text} />
+      ))
     };
 
     const newFriendHandler = () => {
@@ -56,7 +61,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
       pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
     };
-  }, [router, sessionId]);
+  }, [pathname, router, sessionId]);
 
   return (
     <ul role="list" className="max-h-[25rem] overflow-y-auto -mx-2 space-y-1">
