@@ -10,6 +10,11 @@ interface SidebarChatListProps {
   sessionId: string;
 }
 
+interface ExtendedMessage extends Message {
+  senderImage: string
+  senderName: string
+}
+
 const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   const router = useRouter();
   const pathname = usePathname();
