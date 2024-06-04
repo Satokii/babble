@@ -1,12 +1,21 @@
 "use client";
 
-import { FC } from "react";
+import { FC, Fragment, useState } from "react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
+import { X } from "lucide-react";
 
 interface MobileLayoutProps {}
 
 const MobileLayout: FC<MobileLayoutProps> = ({}) => {
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <Transition show={open}>
+    <Transition show={open} as={Fragment}>
       <Dialog className="relative z-10" onClose={setOpen}>
         <TransitionChild
           enter="ease-in-out duration-500"
@@ -47,7 +56,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({}) => {
                       >
                         <span className="absolute -inset-2.5" />
                         <span className="sr-only">Close panel</span>
-                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                        <X className="h-6 w-6" aria-hidden="true" />
                       </button>
                     </div>
                   </TransitionChild>
