@@ -3,7 +3,10 @@ import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { chatHrefConstructor } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 import { getServerSession } from "next-auth";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const Page = async ({}) => {
@@ -17,25 +20,34 @@ const Page = async ({}) => {
 
   const friendsLastSentMessage = await Promise.all(
     friends.map(async (friend) => {
-      const [lastMessageData] = await fetchRedis(
+      const [lastMessageData] = (await fetchRedis(
         "zrange",
         `chat:${chatHrefConstructor(session.user.id, friend.id)}:messages`,
         -1,
         -1
-      ) as string[];
+      )) as string[];
 
-      const lastMessage = JSON.parse(lastMessageData) as Message
+      const lastMessage = JSON.parse(lastMessageData) as Message;
 
       return {
         ...friend,
-        lastMessage
-      }
+        lastMessage,
+      };
     })
   );
 
   return (
     <>
-      <div>Dashboard Page</div>
+      <div className="container py-12">
+        <h1 className="font-bold text-5xl mb-8">Recent Chats</h1>
+        {friendsLastSentMessage.length === 0 ? (
+          <p className="text-sm text-zinc-500">Nothing to see here</p>
+        ) : (
+          friendsLastSentMessage.map((friend) => (
+            <div></div>
+          ))
+        )}
+      </div>
       <SignOutBtn />
     </>
   );
