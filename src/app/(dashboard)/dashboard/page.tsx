@@ -72,12 +72,14 @@ const Page = async ({}) => {
                 <div>
                   <h4 className="text-lg font-semibold">{friend.name}</h4>
                   <p className="mt-1 max-w-md">
-                    <span className="text-zinc-400">
+                    <span className="text-zinc-700 font-semibold">
                       {friend.lastMessage.senderId === session.user.id
                         ? "You: "
                         : ""}
                     </span>
-                    {friend.lastMessage.text}
+                    <span className="text-zinc-400">
+                      {friend.lastMessage.text}
+                    </span>
                   </p>
                 </div>
               </Link>
