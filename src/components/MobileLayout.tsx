@@ -8,9 +8,9 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "./ui/Button";
+import Button, { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
 
 interface MobileLayoutProps {}
@@ -19,11 +19,17 @@ const MobileLayout: FC<MobileLayoutProps> = ({}) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
-        <div className="flex w-full justify-between items-center">
-            <Link className={buttonVariants({variant: "ghost"})} href="/dashboard">
-                <Icons.Logo className="h-6 w-auto text-indigo-600" />
-            </Link>
-        </div>
+      <div className="flex w-full justify-between items-center">
+        <Link
+          className={buttonVariants({ variant: "ghost" })}
+          href="/dashboard"
+        >
+          <Icons.Logo className="h-6 w-auto text-indigo-600" />
+        </Link>
+        <Button className="gap-4" onClick={() => setOpen(true)}>
+          Menu <Menu className="h-6 w-6" />
+        </Button>
+      </div>
       <Transition show={open} as={Fragment}>
         <Dialog className="relative z-10" onClose={setOpen}>
           <TransitionChild
