@@ -89,6 +89,12 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends }) => {
                         {friends.length > 0 ? (
                             <div className='text-xs font-semibold leading-6 text-gray-400'>Chats</div>
                         ) : null}
+                        <nav>
+                            <ul role='list'
+                            className='flex flex-1 flex-col gap-y-7'>
+
+                            </ul>
+                        </nav>
                       </div>
                     </div>
                   </DialogPanel>
