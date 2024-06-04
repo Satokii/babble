@@ -13,9 +13,11 @@ import Link from "next/link";
 import Button, { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
 
-interface MobileLayoutProps {}
+interface MobileLayoutProps {
+    friends: User[]
+}
 
-const MobileLayout: FC<MobileLayoutProps> = ({}) => {
+const MobileLayout: FC<MobileLayoutProps> = ({ friends }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
@@ -83,6 +85,10 @@ const MobileLayout: FC<MobileLayoutProps> = ({}) => {
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
                         {/* Your content */}
+
+                        {friends.length > 0 ? (
+                            <div className='text-xs font-semibold leading-6 text-gray-400'>Chats</div>
+                        ) : null}
                       </div>
                     </div>
                   </DialogPanel>
