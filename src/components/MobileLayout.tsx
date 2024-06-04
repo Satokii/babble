@@ -12,12 +12,15 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Button, { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
+import SidebarChatList from "./SidebarChatList";
+import { Session } from "next-auth";
 
 interface MobileLayoutProps {
-    friends: User[]
+  friends: User[];
+  session: Session
 }
 
-const MobileLayout: FC<MobileLayoutProps> = ({ friends }) => {
+const MobileLayout: FC<MobileLayoutProps> = ({ friends, session }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
@@ -87,13 +90,22 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends }) => {
                         {/* Your content */}
 
                         {friends.length > 0 ? (
-                            <div className='text-xs font-semibold leading-6 text-gray-400'>Chats</div>
+                          <div className="text-xs font-semibold leading-6 text-gray-400">
+                            Chats
+                          </div>
                         ) : null}
                         <nav>
-                            <ul role='list'
-                            className='flex flex-1 flex-col gap-y-7'>
-
-                            </ul>
+                          <ul
+                            role="list"
+                            className="flex flex-1 flex-col gap-y-7"
+                          >
+                            <li>
+                              <SidebarChatList
+                                friends={friends}
+                                sessionId={session.user.id}
+                              />
+                            </li>
+                          </ul>
                         </nav>
                       </div>
                     </div>
