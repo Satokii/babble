@@ -14,6 +14,7 @@ import Button, { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
 import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
+import { SidebarOption } from "@/types/typings";
 
 interface MobileLayoutProps {
   friends: User[];
