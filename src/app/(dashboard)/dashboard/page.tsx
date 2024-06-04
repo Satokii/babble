@@ -58,6 +58,17 @@ const Page = async ({}) => {
                 )}`}
                 className="relative sm:flex"
               >
+                <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
+                  <div className="relative h-6 w-6">
+                    <Image
+                      fill
+                      referrerPolicy="no-referrer"
+                      className="rounded-full"
+                      alt={`${friend.name} profile photo`}
+                      src={friend.image}
+                    />
+                  </div>
+                </div>
               </Link>
             </div>
           ))
