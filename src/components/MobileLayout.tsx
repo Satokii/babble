@@ -17,7 +17,7 @@ import { Session } from "next-auth";
 
 interface MobileLayoutProps {
   friends: User[];
-  session: Session
+  session: Session;
 }
 
 const MobileLayout: FC<MobileLayoutProps> = ({ friends, session }) => {
@@ -104,6 +104,11 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends, session }) => {
                                 friends={friends}
                                 sessionId={session.user.id}
                               />
+                            </li>
+                            <li>
+                              <div className="text-xs font-semibold leading-6 text-gray-400">
+                                Overview
+                              </div>
                             </li>
                           </ul>
                         </nav>
