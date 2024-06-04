@@ -15,7 +15,7 @@ interface MobileLayoutProps {}
 const MobileLayout: FC<MobileLayoutProps> = ({}) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2px4">
+    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
       <Transition show={open} as={Fragment}>
         <Dialog className="relative z-10" onClose={setOpen}>
           <TransitionChild
