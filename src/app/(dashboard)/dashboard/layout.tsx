@@ -16,13 +16,6 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-interface SidebarOption {
-  id: number;
-  name: string;
-  href: string;
-  icon: Icon;
-}
-
 const sidebarOptions: SidebarOption[] = [
   {
     id: 1,
