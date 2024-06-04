@@ -13,7 +13,6 @@ const Page = async ({}) => {
   return (
     <>
         <div>Dashboard Page</div>
-        <p>user {session?.user.email}</p>
         <SignOutBtn />
     </>
   ) 
