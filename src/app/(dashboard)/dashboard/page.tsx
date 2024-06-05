@@ -1,4 +1,3 @@
-import SignOutBtn from "@/components/SignOutBtn";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
