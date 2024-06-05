@@ -42,6 +42,14 @@ export async function POST(req: Request) {
       );
     }
 
+    const [userData, friendData] = (await Promise.all([
+      fetchRedis("get", `user:${session.user.id}`),
+      fetchRedis("get", `user:${idToAdd}`)
+    ])) as [string, string]
+
+    const user = JSON.parse(userData) as User
+    const friend = JSON.parse(friendData) as User
+
     pusherServer.trigger(toPusherKey(`user:${idToAdd}:friends`), "new_friend", {})
 
     // ADD FRIEND TO CURRENT USER FRIEND LIST
