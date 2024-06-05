@@ -45,12 +45,23 @@ const Layout = async ({ children }: LayoutProps) => {
   return (
     <div className="w-full flex h-screen">
       <div className="md:hidden">
-        <MobileLayout friends={friends} session={session} sidebarOptions={sidebarOptions} friendReqCount={requestCount} />
+        <MobileLayout
+          friends={friends}
+          session={session}
+          sidebarOptions={sidebarOptions}
+          friendReqCount={requestCount}
+        />
       </div>
-      <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
-        <Link href="/dashboard" className="flex h-16 shrink-0 items-center">
-          <Icons.Logo className=" h-6 w-auto" />
-        </Link>
+      <div className="hidden md:flex flex-col h-full w-full max-w-xs gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-3">
+        <div className="max-w-xxs">
+          <Link
+            href="/dashboard"
+            className="flex items-center justify-center h-16 gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md"
+          >
+            <Icons.Logo className="h-6 w-auto" />
+            <h1 className="text-xl font-bold">Time2Chat</h1>
+          </Link>
+        </div>
 
         {friends.length > 0 ? (
           <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -120,7 +131,9 @@ const Layout = async ({ children }: LayoutProps) => {
           </ul>
         </nav>
       </div>
-      <section className="max-h-screen container py-16 md:py-12 w-full">{children}</section>
+      <section className="max-h-screen container py-16 md:py-12 w-full">
+        {children}
+      </section>
     </div>
   );
 };
