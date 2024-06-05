@@ -21,18 +21,27 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
     pusherClient.subscribe(
       toPusherKey(`user:${sessionId}:incoming_friend_requests`)
     );
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}: friends`));
 
-    const friendRequestHandler = () => {
-      setRequestCount((prevReqs) => prevReqs + 1)
+    const friendRequestAddCount = () => {
+      setRequestCount((prevReqs) => prevReqs + 1);
     };
 
-    pusherClient.bind("incoming_friend_requests", friendRequestHandler);
+    const friendRequestMinusCount = () => {
+      setRequestCount((prevReqs) => prevReqs - 1);
+    };
+
+    pusherClient.bind("incoming_friend_requests", friendRequestAddCount);
+    pusherClient.bind("new_friend", friendRequestMinusCount);
 
     return () => {
       pusherClient.unsubscribe(
         toPusherKey(`user:${sessionId}:incoming_friend_requests`)
       );
-      pusherClient.unbind("incoming_friend_requests", friendRequestHandler);
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}: friends`));
+
+      pusherClient.unbind("incoming_friend_requests", friendRequestAddCount);
+      pusherClient.unbind("new_friend", friendRequestMinusCount);
     };
   }, [sessionId]);
   return (
@@ -46,7 +55,9 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
       <p className="truncate">Friend Requests</p>
 
       {requestCount > 0 ? (
-        <div className="rounded-full w-5 h-5 text-xs flex justify-center items-center text-white bg-indigo-600">{requestCount}</div>
+        <div className="rounded-full w-5 h-5 text-xs flex justify-center items-center text-white bg-indigo-600">
+          {requestCount}
+        </div>
       ) : null}
     </Link>
   );
