@@ -28,7 +28,7 @@ const page = async () => {
   );
   return (
     <main className="pt-8">
-      <h1 className="font-bold text-5xl mb-8">Add Friend</h1>
+      <h1 className="font-bold text-5xl mb-8">Friend Requests</h1>
       <div className="flex flex-col gap-4">
         <FriendRequests incomingFriendRequests={userFriendReq} sessionId={session.user.id} />
       </div>
