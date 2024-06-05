@@ -35,11 +35,11 @@ const MobileLayout: FC<MobileLayoutProps> = ({
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
-    setOpen(false)
-  }, [pathname])
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
@@ -105,7 +105,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                           Menu
                         </DialogTitle>
                       </div>
-                      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                      <div className="relative mt-6 flex-1 px-4 sm:px-6 flex flex-col">
                         {/* Your content */}
 
                         {friends.length > 0 ? (
@@ -113,7 +113,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                             Chats
                           </div>
                         ) : null}
-                        <nav>
+                        <nav className="flex-1 flex flex-col">
                           <ul
                             role="list"
                             className="flex flex-1 flex-col gap-y-7"
@@ -124,10 +124,12 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                 sessionId={session.user.id}
                               />
                             </li>
+
                             <li>
                               <div className="text-xs font-semibold leading-6 text-gray-400">
                                 Overview
                               </div>
+                              
                               <ul role="list" className="-mx-2 mt-2 space-y-1">
                                 {sidebarOptions.map((option) => {
                                   const Icon = Icons[option.icon];
@@ -147,6 +149,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                     </li>
                                   );
                                 })}
+                                
                                 <li>
                                   <FriendRequestMenu
                                     sessionId={session.user.id}
@@ -167,19 +170,22 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                     alt="Profile picture"
                                   />
                                 </div>
-                                <div className='flex flex-col'>
-                                  <span aria-hidden='true'>
+
+                                <span className="sr-only">Profile</span>
+                                <div className="flex flex-col">
+                                  <span aria-hidden="true">
                                     {session.user.name}
                                   </span>
                                   <span
-                                    className='text-xs text-zinc-400'
-                                    aria-hidden='true'>
+                                    className="text-xs text-zinc-400"
+                                    aria-hidden="true"
+                                  >
                                     {session.user.email}
                                   </span>
                                 </div>
                               </div>
 
-                              <SignOutBtn className='h-full aspect-square' />
+                              <SignOutBtn className="h-full aspect-square" />
                             </li>
                           </ul>
                         </nav>
