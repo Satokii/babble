@@ -15,14 +15,16 @@ import { Icons } from "./Icons";
 import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
 import { SidebarOption } from "@/types/typings";
+import FriendRequestMenu from "./FriendRequestMenu";
 
 interface MobileLayoutProps {
   friends: User[];
   session: Session;
   sidebarOptions: SidebarOption[]
+  friendReqCount: number
 }
 
-const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions }) => {
+const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions, friendReqCount }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
@@ -130,6 +132,12 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions 
                                     </li>
                                   );
                                 })}
+                                 <li>
+                                  <FriendRequestMenu
+                                    sessionId={session.user.id}
+                                    INITIAL_COUNT={friendReqCount}
+                                  />
+                                </li>
                               </ul>
                             </li>
                           </ul>
