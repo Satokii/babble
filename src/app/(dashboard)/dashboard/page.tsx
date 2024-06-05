@@ -87,7 +87,6 @@ const Page = async ({}) => {
           ))
         )}
       </div>
-      <SignOutBtn />
     </>
   );
 };
