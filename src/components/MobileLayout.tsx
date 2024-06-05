@@ -17,6 +17,7 @@ import { Session } from "next-auth";
 import { SidebarOption } from "@/types/typings";
 import FriendRequestMenu from "./FriendRequestMenu";
 import Image from "next/image";
+import SignOutBtn from "./SignOutBtn";
 
 interface MobileLayoutProps {
   friends: User[];
@@ -169,6 +170,8 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                   </span>
                                 </div>
                               </div>
+
+                              <SignOutBtn className='h-full aspect-square' />
                             </li>
                           </ul>
                         </nav>
