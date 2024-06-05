@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 import {
   Dialog,
   DialogPanel,
@@ -18,6 +18,7 @@ import { SidebarOption } from "@/types/typings";
 import FriendRequestMenu from "./FriendRequestMenu";
 import Image from "next/image";
 import SignOutBtn from "./SignOutBtn";
+import { usePathname } from "next/navigation";
 
 interface MobileLayoutProps {
   friends: User[];
@@ -33,6 +34,13 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   friendReqCount,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
+
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
       <div className="flex w-full justify-between items-center">
