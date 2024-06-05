@@ -48,7 +48,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
           className={buttonVariants({ variant: "ghost" })}
           href="/dashboard"
         >
-          <Icons.Logo className="h-6 w-auto text-indigo-600" />
+          <Icons.Logo className="h-6 w-auto" />
         </Link>
         <Button className="gap-4" onClick={() => setOpen(true)}>
           Menu <Menu className="h-6 w-6" />
