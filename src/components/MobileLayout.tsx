@@ -44,12 +44,15 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
       <div className="flex w-full justify-between items-center">
-        <Link
-          className={buttonVariants({ variant: "ghost" })}
-          href="/dashboard"
-        >
-          <Icons.Logo className="h-6 w-auto" />
-        </Link>
+        <div className="max-w-xxs">
+          <Link
+            className="flex items-center justify-center h-16 gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md px-4"
+            href="/dashboard"
+          >
+            <Icons.Logo className="h-6 w-auto" />
+            <h1 className="text-xl font-bold">Time2Chat</h1>
+          </Link>
+        </div>
         <Button className="gap-4" onClick={() => setOpen(true)}>
           Menu <Menu className="h-6 w-6" />
         </Button>
@@ -129,7 +132,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                               <div className="text-xs font-semibold leading-6 text-gray-400">
                                 Overview
                               </div>
-                              
+
                               <ul role="list" className="-mx-2 mt-2 space-y-1">
                                 {sidebarOptions.map((option) => {
                                   const Icon = Icons[option.icon];
@@ -149,7 +152,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                     </li>
                                   );
                                 })}
-                                
+
                                 <li>
                                   <FriendRequestMenu
                                     sessionId={session.user.id}
