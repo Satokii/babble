@@ -45,7 +45,7 @@ const Page = async ({}) => {
           friendsLastSentMessage.map((friend) => (
             <div
               key={friend.id}
-              className="relative bg-zinc-50 border border-zinc-200 p-3 rounded-md"
+              className="relative bg-white border border-zinc-200 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="absolute right-4 inset-y-0 flex items-center">
                 <ChevronRight className="h-7 w-7 text-zinc-400" />
@@ -55,10 +55,10 @@ const Page = async ({}) => {
                   session.user.id,
                   friend.id
                 )}`}
-                className="relative sm:flex"
+                className="relative flex items-center space-x-4"
               >
-                <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-                  <div className="relative h-6 w-6">
+                <div className="flex-shrink-0">
+                  <div className="relative h-10 w-10">
                     <Image
                       fill
                       referrerPolicy="no-referrer"
@@ -70,13 +70,13 @@ const Page = async ({}) => {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold">{friend.name}</h4>
-                  <p className="mt-1 max-w-md">
+                  <p className="mt-1 text-sm">
                     <span className="text-zinc-700 font-semibold">
                       {friend.lastMessage.senderId === session.user.id
                         ? "You: "
                         : ""}
                     </span>
-                    <span className="text-zinc-400">
+                    <span className="text-zinc-500">
                       {friend.lastMessage.text}
                     </span>
                   </p>
