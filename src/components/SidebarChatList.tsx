@@ -2,7 +2,7 @@
 
 import { pusherClient } from "@/lib/pusher";
 import { chatHrefConstructor, toPusherKey } from "@/lib/utils";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import NewMessageToast from "./NewMessageToast";
@@ -18,9 +18,9 @@ interface ExtendedMessage extends Message {
 }
 
 const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
-  const router = useRouter();
   const pathname = usePathname();
   const [unreadMessages, setUnreadMessages] = useState<Message[]>([]);
+  const [myChats, setMyChats] = useState<User[]>(friends)
 
   useEffect(() => {
     if (pathname?.includes("chat")) {
@@ -59,8 +59,8 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       setUnreadMessages((prevMessages) => [...prevMessages, message]);
     };
 
-    const newFriendHandler = () => {
-      router.refresh();
+    const newFriendHandler = (newFriend: User) => {
+      setMyChats((prevChats) => [...prevChats, newFriend])
     };
 
     pusherClient.bind("new_message", newChatHandler);
@@ -73,11 +73,11 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
       pusherClient.unbind("new_message", newChatHandler);
       pusherClient.unbind("new_friend", newFriendHandler);
     };
-  }, [pathname, router, sessionId]);
+  }, [pathname, sessionId]);
 
   return (
     <ul role="list" className="max-h-[25rem] overflow-y-auto -mx-2 space-y-1">
-      {friends.sort().map((friend) => {
+      {myChats.sort().map((friend) => {
         const unreadMessagesCount = unreadMessages.filter((unreadMessage) => {
           return unreadMessage.senderId === friend.id;
         }).length;
