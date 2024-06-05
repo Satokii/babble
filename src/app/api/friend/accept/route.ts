@@ -44,32 +44,39 @@ export async function POST(req: Request) {
 
     const [userData, friendData] = (await Promise.all([
       fetchRedis("get", `user:${session.user.id}`),
-      fetchRedis("get", `user:${idToAdd}`)
-    ])) as [string, string]
+      fetchRedis("get", `user:${idToAdd}`),
+    ])) as [string, string];
 
-    const user = JSON.parse(userData) as User
-    const friend = JSON.parse(friendData) as User
+    const user = JSON.parse(userData) as User;
+    const friend = JSON.parse(friendData) as User;
 
-    pusherServer.trigger(toPusherKey(`user:${idToAdd}:friends`), "new_friend", {})
-
-    // ADD FRIEND TO CURRENT USER FRIEND LIST
-    await db.sadd(`user:${session.user.id}:friends`, idToAdd);
-
-    // ADD USER TO FRIEND'S FRIEND LIST
-    await db.sadd(`user:${idToAdd}:friends`, session.user.id);
-
-    // REMOVE FRIEND REQUEST FROM CURRENT USER REQUESTS
-    await db.srem(`user:${session.user.id}:incoming_friend_requests`, idToAdd);
-
-    // REMOVE FRIEND REQUEST FROM FRIEND'S FRIEND REQUESTS
-    await db.srem(`user:${idToAdd}:outbound_friend_requests`, session.user.id);
+    await Promise.all([
+      pusherServer.trigger(
+        toPusherKey(`user:${idToAdd}:friends`),
+        "new_friend",
+        user
+      ),
+      pusherServer.trigger(
+        toPusherKey(`user:${session.user.id}:friends`),
+        "new_friend",
+        friend
+      ),
+      // ADD FRIEND TO CURRENT USER FRIEND LIST
+      db.sadd(`user:${session.user.id}:friends`, idToAdd),
+      // ADD USER TO FRIEND'S FRIEND LIST
+      db.sadd(`user:${idToAdd}:friends`, session.user.id),
+      // REMOVE FRIEND REQUEST FROM CURRENT USER REQUESTS
+      db.srem(`user:${session.user.id}:incoming_friend_requests`, idToAdd),
+      // REMOVE FRIEND REQUEST FROM FRIEND'S FRIEND REQUESTS
+      db.srem(`user:${idToAdd}:outbound_friend_requests`, session.user.id),
+    ]);
 
     return new Response("OK");
   } catch (err) {
     if (err instanceof z.ZodError) {
-        return new Response("Invalid request payload", { status: 422 })
+      return new Response("Invalid request payload", { status: 422 });
     }
 
-    return new Response("Invalid request.", { status: 400 })
+    return new Response("Invalid request.", { status: 400 });
   }
 }
