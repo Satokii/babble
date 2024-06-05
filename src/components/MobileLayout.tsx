@@ -16,15 +16,21 @@ import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
 import { SidebarOption } from "@/types/typings";
 import FriendRequestMenu from "./FriendRequestMenu";
+import Image from "next/image";
 
 interface MobileLayoutProps {
   friends: User[];
   session: Session;
-  sidebarOptions: SidebarOption[]
-  friendReqCount: number
+  sidebarOptions: SidebarOption[];
+  friendReqCount: number;
 }
 
-const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions, friendReqCount }) => {
+const MobileLayout: FC<MobileLayoutProps> = ({
+  friends,
+  session,
+  sidebarOptions,
+  friendReqCount,
+}) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
@@ -115,7 +121,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions,
                               </div>
                               <ul role="list" className="-mx-2 mt-2 space-y-1">
                                 {sidebarOptions.map((option) => {
-                                  const Icon = Icons[option.icon]
+                                  const Icon = Icons[option.icon];
                                   return (
                                     <li key={option.name}>
                                       <Link
@@ -132,13 +138,27 @@ const MobileLayout: FC<MobileLayoutProps> = ({ friends, session, sidebarOptions,
                                     </li>
                                   );
                                 })}
-                                 <li>
+                                <li>
                                   <FriendRequestMenu
                                     sessionId={session.user.id}
                                     INITIAL_COUNT={friendReqCount}
                                   />
                                 </li>
                               </ul>
+                            </li>
+
+                            <li className="-ml-6 mt-auto flex items-center">
+                              <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
+                                <div className="relative h-8 w-8 bg-gray-50">
+                                  <Image
+                                    fill
+                                    referrerPolicy="no-referrer"
+                                    className="rounded-full"
+                                    src={session.user.image || ""}
+                                    alt="Profile picture"
+                                  />
+                                </div>
+                              </div>
                             </li>
                           </ul>
                         </nav>
