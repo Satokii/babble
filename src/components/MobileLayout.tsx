@@ -185,7 +185,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                 </div>
                               </div>
 
-                              <SignOutBtn className="h-full aspect-square" />
+                              <SignOutBtn className="h-full aspect-square hover:bg-gray-100" />
                             </li>
                           </ul>
                         </nav>
