@@ -42,7 +42,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   }, [pathname]);
 
   return (
-    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-2 px-4">
+    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-1 px-4">
       <div className="flex w-full justify-between items-center">
         <div className="max-w-xxs">
           <Link
