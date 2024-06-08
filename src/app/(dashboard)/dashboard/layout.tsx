@@ -119,8 +119,8 @@ const Layout = async ({ children }: LayoutProps) => {
 
                 <span className="sr-only">Profile</span>
                 <div className="flex flex-col">
-                  <span aria-hidden="true"  className="text-cyan-500">{session.user.name}</span>
-                  <span className="text-xs text-cyan-400" aria-hidden="true">
+                  <span aria-hidden="true">{session.user.name}</span>
+                  <span className="text-xs text-zinc-400" aria-hidden="true">
                     {session.user.email}
                   </span>
                 </div>
