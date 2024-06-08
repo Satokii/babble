@@ -45,84 +45,83 @@ const Messages: FC<MessagesProps> = ({
   }, [chatId]);
   return (
     <div
-  id="messages"
-  className="flex h-full flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded"
->
-  <div ref={scrollDownRef} />
-  {messages.map((message, index) => {
-    const isCurrentUser = message.senderId === sessionId;
+      id="messages"
+      className="flex h-full flex-1 flex-col-reverse gap-4 p-3 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded"
+    >
+      <div ref={scrollDownRef} />
+      {messages.map((message, index) => {
+        const isCurrentUser = message.senderId === sessionId;
 
-    const subsequentUserMessages =
-      messages[index - 1]?.senderId === messages[index].senderId;
+        const subsequentUserMessages =
+          messages[index - 1]?.senderId === messages[index].senderId;
 
-    const isLastMessageOfDay =
-      index === messages.length - 1 ||
-      !isSameDay(
-        new Date(message.timestamp),
-        new Date(messages[index + 1].timestamp)
-      );
+        const isLastMessageOfDay =
+          index === messages.length - 1 ||
+          !isSameDay(
+            new Date(message.timestamp),
+            new Date(messages[index + 1].timestamp)
+          );
 
-    return (
-      <div
-        key={`${message.id}-${message.timestamp}`}
-        className="chat-message"
-      >
-        {isLastMessageOfDay && (
-          <div className="text-center text-sm mb-2 text-gray-600">
-            {format(new Date(message.timestamp), "MM/dd/yyyy")}
-          </div>
-        )}
-
-        <div
-          className={cn("flex items-end", { "justify-end": isCurrentUser })}
-        >
+        return (
           <div
-            className={cn(
-              "flex flex-col space-y-2 text-base max-w-xs mx-2",
-              {
-                "order-1 items-end": isCurrentUser,
-                "order-2 items-start": !isCurrentUser,
-              }
+            key={`${message.id}-${message.timestamp}`}
+            className="chat-message"
+          >
+            {isLastMessageOfDay && (
+              <div className="text-center text-sm mb-2 text-gray-600">
+                {format(new Date(message.timestamp), "MM/dd/yyyy")}
+              </div>
             )}
-          >
-            <span
-              className={cn("px-4 py-2 rounded-lg inline-block shadow-md", {
-                "bg-cyan-500 text-white": isCurrentUser,
-                "bg-gray-100 text-gray-800": !isCurrentUser,
-                "rounded-br-none": !subsequentUserMessages && isCurrentUser,
-                "rounded-bl-none":
-                  !subsequentUserMessages && !isCurrentUser,
-              })}
-            >
-              {message.text}{" "}
-              <span className="ml-2 text-xs text-gray-600">
-                {formatTimestamp(message.timestamp)}
-              </span>
-            </span>
-          </div>
-          <div
-            className={cn("relative w-6 h-6", {
-              "order-2": isCurrentUser,
-              "order-1": !isCurrentUser,
-              invisible: subsequentUserMessages,
-            })}
-          >
-            <Image
-              className="rounded-full"
-              fill
-              src={
-                isCurrentUser ? (sessionImage as string) : chatFriend.image
-              }
-              alt="User profile photo"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-        </div>
-      </div>
-    );
-  })}
-</div>
 
+            <div
+              className={cn("flex items-end", { "justify-end": isCurrentUser })}
+            >
+              <div
+                className={cn(
+                  "flex flex-col space-y-2 text-base max-w-xs mx-2",
+                  {
+                    "order-1 items-end": isCurrentUser,
+                    "order-2 items-start": !isCurrentUser,
+                  }
+                )}
+              >
+                <span
+                  className={cn("px-4 py-2 rounded-lg inline-block shadow-md", {
+                    "bg-cyan-500 text-white": isCurrentUser,
+                    "bg-gray-100 text-gray-800": !isCurrentUser,
+                    "rounded-br-none": !subsequentUserMessages && isCurrentUser,
+                    "rounded-bl-none":
+                      !subsequentUserMessages && !isCurrentUser,
+                  })}
+                >
+                  {message.text}{" "}
+                  <span className="ml-2 text-xs text-gray-600">
+                    {formatTimestamp(message.timestamp)}
+                  </span>
+                </span>
+              </div>
+              <div
+                className={cn("relative w-6 h-6", {
+                  "order-2": isCurrentUser,
+                  "order-1": !isCurrentUser,
+                  invisible: subsequentUserMessages,
+                })}
+              >
+                <Image
+                  className="rounded-full"
+                  fill
+                  src={
+                    isCurrentUser ? (sessionImage as string) : chatFriend.image
+                  }
+                  alt="User profile photo"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

@@ -60,38 +60,40 @@ const page = async ({ params }: PageProps) => {
   const existingMessages = await getChatMessages(chatId);
 
   return (
-    <div className="flex-1 justify-between flex flex-col h-full max-h-[calc(100vh-6rem)] my-2">
-      <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
-        <div className="relative flex items-center space-x-4">
-          <div className="relative">
-            <div className="relative w-8 sm:w-12 h-8 sm:h-12">
-              <Image
-                fill
-                referrerPolicy="no-referrer"
-                src={chatFriend.image}
-                alt={`${chatFriend.name} profile photo`}
-                className="rounded-full"
-              />
-            </div>
+    <div className="flex-1 flex flex-col h-full max-h-[calc(100vh-6rem)] my-2 bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="flex items-center justify-between py-3 px-4 sm:py-4 sm:px-6 bg-cyan-100 border-b border-cyan-200">
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12">
+            <Image
+              fill
+              referrerPolicy="no-referrer"
+              src={chatFriend.image}
+              alt={`${chatFriend.name} profile photo`}
+              className="rounded-full"
+            />
           </div>
           <div className="flex flex-col leading-tight">
-            <div className="text-xl flex items-center">
-              <span className="text-gray-700 mr-3 font-semibold">
-                {chatFriend.name}
-              </span>
+            <div className="text-lg sm:text-xl font-semibold text-cyan-800">
+              {chatFriend.name}
             </div>
-            <span className="text-sm text-gray-600">{chatFriend.email}</span>
+            <span className="text-xs sm:text-sm text-cyan-600">
+              {chatFriend.email}
+            </span>
           </div>
         </div>
       </div>
-      <Messages
-        existingMessages={existingMessages}
-        sessionId={session.user.id}
-        sessionImage={session.user.image}
-        chatFriend={chatFriend}
-        chatId={chatId}
-      />
-      <ChatTextBox chatFriend={chatFriend} chatId={chatId} />
+      <div className="flex-1 p-3 sm:p-4 overflow-y-auto">
+        <Messages
+          existingMessages={existingMessages}
+          sessionId={session.user.id}
+          sessionImage={session.user.image}
+          chatFriend={chatFriend}
+          chatId={chatId}
+        />
+      </div>
+      <div className="p-3 sm:p-4 bg-gray-100 border-t border-gray-200">
+        <ChatTextBox chatFriend={chatFriend} chatId={chatId} />
+      </div>
     </div>
   );
 };

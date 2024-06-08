@@ -13,7 +13,7 @@
 }
 
 .scrollbar-thumb-rounded {
-  scrollbar-color: #04cece #e6fffa;
+  scrollbar-color: #00bcd4 #e0f7fa;
 }
 
 .scrollbar-thumb-rounded::-webkit-scrollbar {
@@ -21,11 +21,11 @@
 }
 
 .scrollbar-thumb-rounded::-webkit-scrollbar-track {
-  background: #e6fffa;
+  background: #e0f7fa;
 }
 
 .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-  background-color: #38b2ac;
+  background-color: #00bcd4;
   border-radius: 9999px;
-  border: 3px solid #e6fffa;
+  border: 3px solid #e0f7fa;
 }
