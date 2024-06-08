@@ -52,7 +52,7 @@ const Layout = async ({ children }: LayoutProps) => {
           friendReqCount={requestCount}
         />
       </div>
-      <div className="hidden md:flex flex-col h-full w-full max-w-xs gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-3">
+      <div className="hidden md:flex flex-col h-full w-full max-w-[16rem] gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-3">
         <div className="max-w-xxs">
           <Link
             href="/dashboard"
@@ -69,7 +69,7 @@ const Layout = async ({ children }: LayoutProps) => {
           </div>
         ) : null}
 
-        <nav className="flex flex-1 flex-col">
+        <nav className="flex flex-1 flex-col flex-shrink-0">
           <ul role="list" className="flex flex-1 flex-col gap-y-7">
             <li>
               <SidebarChatList friends={friends} sessionId={session.user.id} />
@@ -105,8 +105,8 @@ const Layout = async ({ children }: LayoutProps) => {
               </ul>
             </li>
 
-            <li className="-mx-6 mt-auto flex items-center">
-              <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
+            <li className="mt-auto flex items-center">
+              <div className="flex flex-1 items-center gap-x-3 px-1 py-3 text-sm font-semibold leading-6 text-gray-900">
                 <div className="relative h-8 w-8 bg-gray-50">
                   <Image
                     fill
