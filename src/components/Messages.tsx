@@ -68,7 +68,7 @@ const Messages: FC<MessagesProps> = ({
             className="chat-message"
           >
             {isLastMessageOfDay && (
-              <div className="text-center text-sm mb-2 text-gray-600">
+              <div className="text-center text-[0.75rem] sm:text-sm my-3 text-gray-600">
                 {format(new Date(message.timestamp), "MM/dd/yyyy")}
               </div>
             )}
