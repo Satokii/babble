@@ -12,6 +12,7 @@ import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 import SidebarChatList from "@/components/SidebarChatList";
 import MobileLayout from "@/components/MobileLayout";
 import { SidebarOption } from "@/types/typings";
+import AddFriendLink from "@/components/AddFriendLink";
 
 interface LayoutProps {
   children: ReactNode;
@@ -81,22 +82,9 @@ const Layout = async ({ children }: LayoutProps) => {
                 Overview
               </div>
               <ul role="list" className="-mx-2 mt-2 space-y-2">
-                {sidebarOptions.map((option) => {
-                  const Icon = Icons[option.icon];
-                  return (
-                    <li key={option.id}>
-                      <Link
-                        href={option.href}
-                        className="text-gray-800 hover:text-cyan-600 hover:bg-cyan-50 group flex gap-4 rounded-md p-2 text-sm leading-6 font-semibold transition duration-300 ease-in-out"
-                      >
-                        <span className="text-gray-400 border-gray-200 group-hover:border-cyan-600 group-hover:text-cyan-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white transition duration-300 ease-in-out">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <span className="truncate">{option.name}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
+                <li>
+                  <AddFriendLink />
+                </li>
                 <li>
                   <FriendRequestLink
                     sessionId={session.user.id}
