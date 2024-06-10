@@ -50,9 +50,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
             <div className="relative w-9 h-9">
               <Icons.Logo />
             </div>
-            <h1 className="text-md font-bold text-cyan-600">
-              Time2Chat
-            </h1>
+            <h1 className="text-md font-bold text-cyan-600">Time2Chat</h1>
           </Link>
         </div>
         <Button className="gap-4" onClick={() => setOpen(true)}>
@@ -104,24 +102,24 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         </button>
                       </div>
                     </TransitionChild>
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg py-6">
                       <div className="px-4 sm:px-6">
                         <DialogTitle className="text-base font-semibold leading-6 text-gray-900">
                           Menu
                         </DialogTitle>
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6 flex flex-col">
-                        {/* Your content */}
+                        {/* Sidebar content */}
 
                         {friends.length > 0 ? (
-                          <div className="text-xs font-semibold leading-6 text-gray-400">
+                          <div className="text-xs font-semibold leading-6 text-gray-500">
                             Chats
                           </div>
                         ) : null}
-                        <nav className="flex-1 flex flex-col">
+                        <nav className="flex flex-1 flex-col flex-shrink-0">
                           <ul
                             role="list"
-                            className="flex flex-1 flex-col gap-y-7"
+                            className="flex flex-1 flex-col gap-y-6"
                           >
                             <li>
                               <SidebarChatList
@@ -131,11 +129,11 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                             </li>
 
                             <li>
-                              <div className="text-xs font-semibold leading-6 text-gray-400">
+                              <div className="text-xs font-semibold leading-6 text-gray-500">
                                 Overview
                               </div>
 
-                              <ul role="list" className="-mx-2 mt-2 space-y-1">
+                              <ul role="list" className="-mx-2 mt-2 space-y-2">
                                 <li>
                                   <AddFriendLink />
                                 </li>
@@ -149,15 +147,15 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                               </ul>
                             </li>
 
-                            <li className="-ml-6 mt-auto flex items-center">
-                              <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
-                                <div className="relative h-8 w-8 bg-gray-50">
+                            <li className="mt-auto flex items-center">
+                              <div className="flex flex-1 items-center gap-x-3 px-1 py-3 text-sm font-semibold leading-5 text-gray-900">
+                                <div className="relative h-9 w-9">
                                   <Image
                                     fill
                                     referrerPolicy="no-referrer"
                                     className="rounded-full"
                                     src={session.user.image || ""}
-                                    alt="Profile picture"
+                                    alt="User profile picture"
                                   />
                                 </div>
 
@@ -167,7 +165,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                     {session.user.name}
                                   </span>
                                   <span
-                                    className="text-xs text-zinc-400"
+                                    className="text-xs text-gray-500"
                                     aria-hidden="true"
                                   >
                                     {session.user.email}
@@ -175,7 +173,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                 </div>
                               </div>
 
-                              <SignOutBtn className="h-full aspect-square hover:bg-cyan-100" />
+                              <SignOutBtn className="h-full aspect-square hover:bg-cyan-100 transition duration-300 ease-in-out" />
                             </li>
                           </ul>
                         </nav>
