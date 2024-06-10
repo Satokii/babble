@@ -37,55 +37,59 @@ const Page = async ({}) => {
 
   return (
     <>
-      <div className="container py-12">
-        <h1 className="font-bold text-5xl mb-8">Recent Chats</h1>
-        {friendsLastSentMessage.length === 0 ? (
-          <p className="text-sm text-zinc-500">Nothing to see here</p>
-        ) : (
-          friendsLastSentMessage.map((friend) => (
-            <div
-              key={friend.id}
-              className="relative bg-white border border-zinc-200 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="absolute right-4 inset-y-0 flex items-center">
-                <ChevronRight className="h-7 w-7 text-zinc-400" />
+      <div className="container mx-auto px-4 py-8 sm:py-12 bg-gradient-to-r from-cyan-200 to-teal-300 rounded-xl shadow-lg">
+    <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-8 text-center sm:text-left text-gray-800">
+      Recent Chats
+    </h1>
+    {friendsLastSentMessage.length === 0 ? (
+      <p className="text-sm text-gray-600 text-center sm:text-left">
+        Nothing to see here
+      </p>
+    ) : (
+      friendsLastSentMessage.map((friend) => (
+        <div
+          key={friend.id}
+          className="relative bg-white border border-gray-200 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow mb-4"
+        >
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+            <ChevronRight className="h-6 w-6 text-gray-400" />
+          </div>
+          <Link
+            href={`/dashboard/chat/${chatHrefConstructor(
+              session.user.id,
+              friend.id
+            )}`}
+            className="relative flex items-center space-x-3 sm:space-x-4"
+          >
+            <div className="flex-shrink-0">
+              <div className="relative h-12 w-12 rounded-full overflow-hidden bg-cyan-200">
+                <Image
+                  fill
+                  referrerPolicy="no-referrer"
+                  className="rounded-full"
+                  alt={`${friend.name} profile photo`}
+                  src={friend.image}
+                />
               </div>
-              <Link
-                href={`/dashboard/chat/${chatHrefConstructor(
-                  session.user.id,
-                  friend.id
-                )}`}
-                className="relative flex items-center space-x-4"
-              >
-                <div className="flex-shrink-0">
-                  <div className="relative h-10 w-10">
-                    <Image
-                      fill
-                      referrerPolicy="no-referrer"
-                      className="rounded-full"
-                      alt={`${friend.name} profile photo`}
-                      src={friend.image}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold">{friend.name}</h4>
-                  <p className="mt-1 text-sm">
-                    <span className="text-zinc-700 font-semibold">
-                      {friend.lastMessage.senderId === session.user.id
-                        ? "You: "
-                        : ""}
-                    </span>
-                    <span className="text-zinc-500">
-                      {friend.lastMessage.text}
-                    </span>
-                  </p>
-                </div>
-              </Link>
             </div>
-          ))
-        )}
-      </div>
+            <div>
+              <h4 className="text-base sm:text-lg font-semibold text-cyan-700">
+                {friend.name}
+              </h4>
+              <p className="mt-1 text-sm sm:text-base text-gray-700">
+                <span className="font-semibold">
+                  {friend.lastMessage.senderId === session.user.id
+                    ? "You: "
+                    : ""}
+                </span>
+                <span>{friend.lastMessage.text}</span>
+              </p>
+            </div>
+          </Link>
+        </div>
+      ))
+    )}
+  </div>
     </>
   );
 };
