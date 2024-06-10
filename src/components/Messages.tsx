@@ -77,28 +77,29 @@ const Messages: FC<MessagesProps> = ({
               className={cn("flex items-end", { "justify-end": isCurrentUser })}
             >
               <div
-                className={cn(
-                  "flex flex-col space-y-2 text-base max-w-xs mx-2",
-                  {
-                    "order-1 items-end": isCurrentUser,
-                    "order-2 items-start": !isCurrentUser,
-                  }
-                )}
+                className={cn("flex flex-col space-y-2 text-base mx-2", {
+                  "order-1 items-end": isCurrentUser,
+                  "order-2 items-start": !isCurrentUser,
+                })}
               >
-                <span
-                  className={cn("px-4 py-2 max-w-xs rounded-lg inline-block shadow-md break-words", {
-                    "bg-cyan-500 text-white": isCurrentUser,
-                    "bg-gray-100 text-gray-800": !isCurrentUser,
-                    "rounded-br-none": !subsequentUserMessages && isCurrentUser,
-                    "rounded-bl-none":
-                      !subsequentUserMessages && !isCurrentUser,
-                  })}
+                <div
+                  className={cn(
+                    "px-2 py-1 max-w-44 sm:max-w-xs md:max-w-sm text-sm sm:text-base rounded-lg inline-block shadow-md break-words",
+                    {
+                      "bg-cyan-500 text-white": isCurrentUser,
+                      "bg-gray-100 text-gray-800": !isCurrentUser,
+                      "rounded-br-none":
+                        !subsequentUserMessages && isCurrentUser,
+                      "rounded-bl-none":
+                        !subsequentUserMessages && !isCurrentUser,
+                    }
+                  )}
                 >
-                  {message.text}{" "}
-                  <span className="ml-2 text-xs text-gray-600">
+                  <p className="pb-0.5 pr-3">{message.text}</p>
+                  <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
                     {formatTimestamp(message.timestamp)}
                   </span>
-                </span>
+                </div>
               </div>
               <div
                 className={cn("relative w-6 h-6", {
