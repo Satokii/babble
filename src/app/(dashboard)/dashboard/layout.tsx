@@ -132,7 +132,7 @@ const Layout = async ({ children }: LayoutProps) => {
           </ul>
         </nav>
       </div>
-      <section className="max-h-screen container py-16 md:py-12 w-full">
+      <section className="max-h-screen container my-6 sm:my-2 py-16 md:py-12 w-full">
         {children}
       </section>
     </div>
