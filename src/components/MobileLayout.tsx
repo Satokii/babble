@@ -15,7 +15,7 @@ import { Icons } from "./Icons";
 import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
 import { SidebarOption } from "@/types/typings";
-import FriendRequestMenu from "./FriendRequestMenu";
+import FriendRequestLink from "./FriendRequestLink";
 import Image from "next/image";
 import SignOutBtn from "./SignOutBtn";
 import { usePathname } from "next/navigation";
@@ -158,7 +158,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                 })}
 
                                 <li>
-                                  <FriendRequestMenu
+                                  <FriendRequestLink
                                     sessionId={session.user.id}
                                     INITIAL_COUNT={friendReqCount}
                                   />

@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
 import Image from "next/image";
 import SignOutBtn from "@/components/SignOutBtn";
-import FriendRequestMenu from "@/components/FriendRequestMenu";
+import FriendRequestLink from "@/components/FriendRequestLink";
 import { fetchRedis } from "@/helpers/redis";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 import SidebarChatList from "@/components/SidebarChatList";
@@ -98,7 +98,7 @@ const Layout = async ({ children }: LayoutProps) => {
                   );
                 })}
                 <li>
-                  <FriendRequestMenu
+                  <FriendRequestLink
                     sessionId={session.user.id}
                     INITIAL_COUNT={requestCount}
                   />
