@@ -56,9 +56,11 @@ const Layout = async ({ children }: LayoutProps) => {
         <div className="max-w-xxs">
           <Link
             href="/dashboard"
-            className="flex items-center justify-center h-16 gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md"
+            className="flex items-center justify-center h-16 gap-1 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md"
           >
-            <Icons.Logo className="h-6 w-auto" />
+            <div className="relative w-11 h-11">
+              <Icons.Logo />
+            </div>
             <h1 className="text-xl font-bold text-cyan-500">Time2Chat</h1>
           </Link>
         </div>
