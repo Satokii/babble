@@ -50,7 +50,10 @@ const FriendRequests: FC<FriendRequestsProps> = ({
       senderId,
       senderEmail,
     }: IncomingFriendRequest) => {
-      setFriendRequests((prevFriendReqs) => [...prevFriendReqs, { senderId, senderEmail }]);
+      setFriendRequests((prevFriendReqs) => [
+        ...prevFriendReqs,
+        { senderId, senderEmail },
+      ]);
     };
 
     pusherClient.bind("incoming_friend_requests", friendRequestHandler);
@@ -69,22 +72,27 @@ const FriendRequests: FC<FriendRequestsProps> = ({
         <p className="text-sm text-zinc-500">Nothing to see here</p>
       ) : (
         friendRequests.map((request) => (
-          <div key={request.senderId} className="flex gap-4 items-center">
-            <UserPlus className="text-black" />
-            <p className="font-medium text-lg">{request.senderEmail}</p>
+          <div
+            key={request.senderId}
+            className="flex px-2 gap-2 sm:gap-5 items-center justify-center sm:justify-start"
+          >
+            <UserPlus className="text-black w-5 h-5 sm:w-7 sm:h-7" />
+            <p className="font-medium text-[0.7rem] sm:text-lg">
+              {request.senderEmail}
+            </p>
             <button
               aria-label="accept friend"
-              className="w-8 h-8 bg-indigo-600 hover:bg-indigo-700 grid place-items-center rounded-full transition hover:shadow-md"
+              className="w-6 h-6 sm:w-9 sm:h-9 bg-green-500 hover:bg-green-600 grid place-items-center rounded-full transition duration-300 ease-in-out hover:shadow-lg"
               onClick={() => acceptFriendReq(request.senderId)}
             >
-              <Check className="font-semibold text-white w-3/4 h-3/4" />
+              <Check className="text-white w-4/5 h-4/5" />
             </button>
             <button
               aria-label="deny friend"
-              className="w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md"
+              className="w-6 h-6 sm:w-9 sm:h-9 bg-red-500 hover:bg-red-600 grid place-items-center rounded-full transition duration-300 ease-in-out hover:shadow-lg"
               onClick={() => rejectFriendReq(request.senderId)}
             >
-              <X className="font-semibold text-white w-3/4 h-3/4" />
+              <X className="text-white w-4/5 h-4/5" />
             </button>
           </div>
         ))
