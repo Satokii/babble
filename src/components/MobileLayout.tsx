@@ -40,17 +40,17 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   }, [pathname]);
 
   return (
-    <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-1 px-4">
-      <div className="flex w-full justify-between items-center">
+    <div className="fixed top-0 bg-gradient-to-r from-cyan-200 to-teal-300 border-b shadow-lg p-4 inset-x-0 py-1 px-3">
+      <div className="flex h-16 w-full justify-between items-center px-1">
         <div className="max-w-xs">
           <Link
             href="/dashboard"
-            className="flex items-center justify-center h-16 gap-1 sm:gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md"
+            className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out hover:bg-cyan-100 hover:text-cyan-700 rounded-lg hover:shadow-md"
           >
-            <div className="relative w-8 h-8 sm:w-11 sm:h-11">
+            <div className="relative w-9 h-9">
               <Icons.Logo />
             </div>
-            <h1 className="text-lg sm:text-xl font-bold text-cyan-500">
+            <h1 className="text-md font-bold text-cyan-600">
               Time2Chat
             </h1>
           </Link>
