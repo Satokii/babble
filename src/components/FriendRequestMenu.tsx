@@ -47,15 +47,14 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
   return (
     <Link
       href="/dashboard/friend-requests"
-      className="text-gray-700 hover:text-cyan-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+      className="group flex items-center gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:bg-cyan-500 hover:text-white"
     >
-      <div className="text-gray-400 border-gray-200 group-hover:border-cyan-600 group-hover:text-cyan-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white">
+      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-[0.625rem] font-medium text-gray-400 transition duration-300 ease-in-out group-hover:border-cyan-600 group-hover:text-cyan-600">
         <User className="h-4 w-4" />
       </div>
       <p className="truncate">Friend Requests</p>
-
       {requestCount > 0 ? (
-        <div className="rounded-full w-5 h-5 text-xs flex justify-center items-center text-white bg-cyan-600">
+        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-xs text-white leading-none">
           {requestCount}
         </div>
       ) : null}
