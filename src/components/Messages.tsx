@@ -86,7 +86,7 @@ const Messages: FC<MessagesProps> = ({
                 )}
               >
                 <span
-                  className={cn("px-4 py-2 rounded-lg inline-block shadow-md", {
+                  className={cn("px-4 py-2 max-w-xs rounded-lg inline-block shadow-md break-words", {
                     "bg-cyan-500 text-white": isCurrentUser,
                     "bg-gray-100 text-gray-800": !isCurrentUser,
                     "rounded-br-none": !subsequentUserMessages && isCurrentUser,
