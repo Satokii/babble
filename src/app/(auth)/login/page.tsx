@@ -24,27 +24,29 @@ const Page: FC = () => {
 
   return (
     <>
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 p-6">
-        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8 space-y-8">
-          <div className="flex flex-col items-center space-y-6">
-            <h2 className="text-3xl font-bold text-gray-900">Time2Chat</h2>
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 p-4 sm:p-6">
+        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 sm:p-8 space-y-6 sm:space-y-8">
+          <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              Time2Chat
+            </h2>
             <Image
               src={LogoImage}
               alt="App logo"
-              width={120}
-              height={120}
+              width={100}
+              height={100}
               className="rounded-full"
             />
           </div>
           <Button
             isLoading={isLoading}
             type="button"
-            className="flex items-center justify-center w-full py-6 text-lg font-semibold text-white bg-cyan-700 hover:bg-cyan-900 rounded-lg shadow-md transition-colors duration-300"
+            className="flex items-center justify-center w-full py-4 sm:py-6 text-base sm:text-lg font-semibold text-white bg-cyan-700 hover:bg-cyan-900 rounded-lg shadow-md transition-colors duration-300"
             onClick={loginWithGoogle}
           >
             {isLoading ? null : (
               <svg
-                className="mr-2 h-5 w-5"
+                className="mr-2 h-4 w-4 sm:h-5 sm:w-5"
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
