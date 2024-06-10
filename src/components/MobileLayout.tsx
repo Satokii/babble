@@ -44,13 +44,17 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   return (
     <div className="fixed bg-zinc-50 border-b border-zinc-200 top-0 inset-x-0 py-1 px-4">
       <div className="flex w-full justify-between items-center">
-        <div className="max-w-xxs">
+        <div className="max-w-xs">
           <Link
-            className="flex items-center justify-center h-16 gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md px-4"
             href="/dashboard"
+            className="flex items-center justify-center h-16 gap-1 sm:gap-2 transition duration-300 ease-in-out hover:bg-gray-50 hover:text-gray-700 rounded-lg hover:shadow-md"
           >
-            <Icons.Logo className="h-6 w-auto" />
-            <h1 className="text-xl font-bold text-cyan-500">Time2Chat</h1>
+            <div className="relative w-8 h-8 sm:w-11 sm:h-11">
+              <Icons.Logo />
+            </div>
+            <h1 className="text-lg sm:text-xl font-bold text-cyan-500">
+              Time2Chat
+            </h1>
           </Link>
         </div>
         <Button className="gap-4" onClick={() => setOpen(true)}>
