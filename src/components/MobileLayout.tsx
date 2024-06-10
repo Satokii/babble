@@ -14,7 +14,6 @@ import Button, { buttonVariants } from "./ui/Button";
 import { Icons } from "./Icons";
 import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
-import { SidebarOption } from "@/types/typings";
 import FriendRequestLink from "./FriendRequestLink";
 import Image from "next/image";
 import SignOutBtn from "./SignOutBtn";
@@ -24,14 +23,12 @@ import AddFriendLink from "./AddFriendLink";
 interface MobileLayoutProps {
   friends: User[];
   session: Session;
-  sidebarOptions: SidebarOption[];
   friendReqCount: number;
 }
 
 const MobileLayout: FC<MobileLayoutProps> = ({
   friends,
   session,
-  sidebarOptions,
   friendReqCount,
 }) => {
   const [open, setOpen] = useState<boolean>(false);

@@ -1,9 +1,9 @@
-import { Icon, Icons } from "@/components/Icons";
+import { Icons } from "@/components/Icons";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import Image from "next/image";
 import SignOutBtn from "@/components/SignOutBtn";
 import FriendRequestLink from "@/components/FriendRequestLink";
@@ -11,21 +11,11 @@ import { fetchRedis } from "@/helpers/redis";
 import { getFriendsByUserId } from "@/helpers/get-friends-by-userId";
 import SidebarChatList from "@/components/SidebarChatList";
 import MobileLayout from "@/components/MobileLayout";
-import { SidebarOption } from "@/types/typings";
 import AddFriendLink from "@/components/AddFriendLink";
 
 interface LayoutProps {
   children: ReactNode;
 }
-
-const sidebarOptions: SidebarOption[] = [
-  {
-    id: 1,
-    name: "Add Friend",
-    href: "/dashboard/add",
-    icon: "UserPlus",
-  },
-];
 
 const Layout = async ({ children }: LayoutProps) => {
   const session = await getServerSession(authOptions);
@@ -49,7 +39,6 @@ const Layout = async ({ children }: LayoutProps) => {
         <MobileLayout
           friends={friends}
           session={session}
-          sidebarOptions={sidebarOptions}
           friendReqCount={requestCount}
         />
       </div>
