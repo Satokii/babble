@@ -24,31 +24,31 @@ const Page: FC = () => {
 
   return (
     <>
-      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full flex flex-col items-center max-w-md space-y-8">
-          <div className="flex flex-col items-center gap-8">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 p-6">
+        <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8 space-y-8">
+          <div className="flex flex-col items-center space-y-6">
+            <h2 className="text-3xl font-bold text-gray-900">Time2Chat</h2>
             <Image
-              fill
               src={LogoImage}
               alt="App logo"
+              width={120}
+              height={120}
+              className="rounded-full"
             />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Sign In
-            </h2>
           </div>
           <Button
             isLoading={isLoading}
             type="button"
-            className="max-w-sm mx-auto w-full"
+            className="flex items-center justify-center w-full py-6 text-lg font-semibold text-white bg-cyan-700 hover:bg-cyan-900 rounded-lg shadow-md transition-colors duration-300"
             onClick={loginWithGoogle}
           >
             {isLoading ? null : (
               <svg
-                className="mr-2 h-4 w-4"
+                className="mr-2 h-5 w-5"
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
-                data-icon="github"
+                data-icon="google"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ const Page: FC = () => {
                 <path d="M1 1h22v22H1z" fill="none" />
               </svg>
             )}
-            Google
+            Sign in with Google
           </Button>
         </div>
       </div>
