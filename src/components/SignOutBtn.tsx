@@ -13,6 +13,7 @@ const SignOutBtn: FC<SignOutBtnProps> = ({ ...props }) => {
   return (
     <Button
       {...props}
+      className="h-10 w-10 p-2 aspect-square hover:bg-cyan-100 transition duration-300 ease-in-out"
       variant="ghost"
       onClick={async () => {
         setSignOutUser(true);
