@@ -69,7 +69,7 @@ const Messages: FC<MessagesProps> = ({
           >
             {isLastMessageOfDay && (
               <div className="text-center text-[0.75rem] sm:text-sm my-3 text-gray-600">
-                {format(new Date(message.timestamp), "MM/dd/yyyy")}
+                {format(new Date(message.timestamp), "dd/MM/yyyy")}
               </div>
             )}
 
