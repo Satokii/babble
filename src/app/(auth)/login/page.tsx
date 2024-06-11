@@ -12,14 +12,26 @@ import axios from "axios";
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailSignup, setEmailSignup] = useState("");
+  const [passwordSignup, setPasswordSignup] = useState("");
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const [emailLogin, setEmailLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+
+  const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     await axios.post("/api/auth/signup", {
-      email,
-      password,
+      emailSignup,
+      passwordSignup,
+    });
+  };
+
+  const handleLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    await signIn("credentials", {
+      redirect: false,
+      emailLogin,
+      passwordLogin,
     });
   };
 
@@ -50,20 +62,35 @@ const Page: FC = () => {
               className="rounded-full"
             />
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSignup}>
             <input
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={emailSignup}
+              onChange={(e) => setEmailSignup(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={passwordSignup}
+              onChange={(e) => setPasswordSignup(e.target.value)}
             />
             <button type="submit">Sign Up</button>
+          </form>
+          <form onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={emailLogin}
+              onChange={(e) => setEmailLogin(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={passwordLogin}
+              onChange={(e) => setPasswordLogin(e.target.value)}
+            />
+            <button type="submit">Sign In</button>
           </form>
           <Button
             isLoading={isLoading}
