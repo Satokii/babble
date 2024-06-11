@@ -83,7 +83,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
           return unreadMessage.senderId === friend.id;
         }).length;
         return (
-          <li key={friend.id}>
+          <li key={friend.id} className="border-b border-cyan-400 transition duration-200 ease-in-out hover:border-transparent">
             <a
               href={`/dashboard/chat/${chatHrefConstructor(
                 sessionId,
