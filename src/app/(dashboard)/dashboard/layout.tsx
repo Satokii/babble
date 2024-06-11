@@ -34,7 +34,7 @@ const Layout = async ({ children }: LayoutProps) => {
   ).length;
 
   return (
-    <div className="w-full flex h-screen">
+    <div className="w-full flex h-screen bg-gray-50">
       <div className="md:hidden">
         <MobileLayout
           friends={friends}
