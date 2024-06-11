@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
 const page = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000))
   const session = await getServerSession(authOptions);
   if (!session) {
     notFound();
