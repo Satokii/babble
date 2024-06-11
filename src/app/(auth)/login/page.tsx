@@ -7,9 +7,21 @@ import toast from "react-hot-toast";
 import LogoImage from "@/public/logo.png";
 
 import Image from "next/image";
+import axios from "axios";
 
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    await axios.post("/api/auth/signup", {
+      email,
+      password,
+    });
+  };
 
   async function loginWithGoogle() {
     setIsLoading(true);
@@ -38,6 +50,21 @@ const Page: FC = () => {
               className="rounded-full"
             />
           </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Sign Up</button>
+          </form>
           <Button
             isLoading={isLoading}
             type="button"
