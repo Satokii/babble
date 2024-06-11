@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import NewMessageToast from "./NewMessageToast";
+import Image from "next/image";
 
 interface SidebarChatListProps {
   friends: User[];
@@ -20,7 +21,7 @@ interface ExtendedMessage extends Message {
 const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   const pathname = usePathname();
   const [unreadMessages, setUnreadMessages] = useState<Message[]>([]);
-  const [myChats, setMyChats] = useState<User[]>(friends)
+  const [myChats, setMyChats] = useState<User[]>(friends);
 
   useEffect(() => {
     if (pathname?.includes("chat")) {
@@ -60,7 +61,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
     };
 
     const newFriendHandler = (newFriend: User) => {
-      setMyChats((prevChats) => [...prevChats, newFriend])
+      setMyChats((prevChats) => [...prevChats, newFriend]);
     };
 
     pusherClient.bind("new_message", newChatHandler);
@@ -90,6 +91,15 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
               )}`}
               className="group flex items-center h-10 gap-x-3 rounded-md p-2 text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:bg-cyan-500 hover:text-white"
             >
+              <div className="relative h-6 w-6">
+                <Image
+                  fill
+                  referrerPolicy="no-referrer"
+                  className="rounded-full"
+                  src={friend.image || ""}
+                  alt="Chat friend profile picture"
+                />
+              </div>
               {friend.name}
               {unreadMessagesCount > 0 ? (
                 <div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-xs text-white leading-none">
