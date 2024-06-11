@@ -50,7 +50,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
             <div className="relative w-9 h-9">
               <Icons.Logo />
             </div>
-            <h1 className="text-md font-bold text-cyan-600">Time2Chat</h1>
+            <h1 className="text-md font-bold text-cyan-600">Babble</h1>
           </Link>
         </div>
         <Button className="gap-4" onClick={() => setOpen(true)}>

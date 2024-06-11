@@ -51,7 +51,7 @@ const Layout = async ({ children }: LayoutProps) => {
             <div className="relative w-12 h-12">
               <Icons.Logo />
             </div>
-            <h1 className="text-2xl font-bold text-cyan-600">Time2Chat</h1>
+            <h1 className="text-2xl font-bold text-cyan-600">Babble</h1>
           </Link>
         </div>
 

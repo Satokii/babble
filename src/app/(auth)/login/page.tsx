@@ -28,7 +28,7 @@ const Page: FC = () => {
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 sm:p-8 space-y-6 sm:space-y-8">
           <div className="flex flex-col items-center space-y-4 sm:space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-              Time2Chat
+              Babble
             </h2>
             <Image
               src={LogoImage}

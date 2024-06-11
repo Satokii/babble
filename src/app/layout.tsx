@@ -6,8 +6,8 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Chat App",
-  description: "A real-time chat application",
+  title: "Babble",
+  description: "Babble: a real-time chat application",
 };
 
 export default function RootLayout({
