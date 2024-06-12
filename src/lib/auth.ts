@@ -20,34 +20,34 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        console.log(credentials);
-        const { email, password } = credentials!;
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     email: { label: "Email", type: "text" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials) {
+    //     console.log(credentials);
+    //     const { email, password } = credentials!;
 
-        // const email = credentials?.email
-        // const password = credentials?.password
+    //     const email = credentials?.email
+    //     const password = credentials?.password
 
-        const userResult = await fetchRedis("get", `user:email:${email}`);
-        if (!userResult) {
-          throw new Error("No user found with this email.");
-        }
+    //     const userResult = await fetchRedis("get", `user:email:${email}`);
+    //     if (!userResult) {
+    //       throw new Error("No user found with this email.");
+    //     }
 
-        const user = JSON.parse(userResult);
+    //     const user = JSON.parse(userResult);
 
-        const isValidPassword = await bcrypt.compare(password, user.password);
-        if (!isValidPassword) {
-          throw new Error("Invalid password");
-        }
+    //     const isValidPassword = await bcrypt.compare(password, user.password);
+    //     if (!isValidPassword) {
+    //       throw new Error("Invalid password");
+    //     }
 
-        return user;
-      },
-    }),
+    //     return user;
+    //   },
+    // }),
   ],
   secret: process.env.NEXTAUTH_SECRET!,
   callbacks: {

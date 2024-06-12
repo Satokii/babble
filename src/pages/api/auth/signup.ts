@@ -8,28 +8,29 @@ const { v4: uuidv4 } = require('uuid');
 const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     try {
-      const { email, password } = req.body;
+      const { emailSignup, passwordSignup } = req.body;
 
-      const existingUser = await fetchRedis("get", `user:email:${email}`);
+      const existingUser = await fetchRedis("get", `user:email:${emailSignup}`);
       if (existingUser) {
         return res.status(400).json({ message: "User already exists." });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(passwordSignup, 10);
 
       const userId = uuidv4();
       const user = {
         id: userId,
-        email,
+        email: emailSignup,
         password: hashedPassword,
+        image: null,
+        name: "test name"
       };
 
       await db.set(`user:${userId}`, JSON.stringify(user));
-      await db.set(`user:email:${email}`, JSON.stringify(user));
+      await db.set(`user:email:${emailSignup}`, user.id);
 
       return res.status(201).json(user);
     } catch (err) {
-        console.log(err)
       return res.status(500).json({ err });
     }
   }
