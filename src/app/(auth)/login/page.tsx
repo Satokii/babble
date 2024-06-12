@@ -24,6 +24,8 @@ const Page: FC = () => {
       emailSignup,
       passwordSignup,
     });
+    setEmailSignup("")
+    setPasswordSignup("")
   };
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
