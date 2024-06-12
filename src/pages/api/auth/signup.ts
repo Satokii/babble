@@ -29,6 +29,7 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
 
       return res.status(201).json(user);
     } catch (err) {
+        console.log(err)
       return res.status(500).json({ err });
     }
   }
