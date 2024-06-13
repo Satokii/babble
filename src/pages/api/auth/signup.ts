@@ -22,7 +22,7 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
         id: userId,
         email: emailSignup,
         password: hashedPassword,
-        image: null,
+        image: "",
         name: "test name"
       };
 
