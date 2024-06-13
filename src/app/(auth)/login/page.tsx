@@ -5,11 +5,12 @@ import Button from "@/components/ui/Button";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import LogoImage from "@/public/logo.png";
-
 import Image from "next/image";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Page: FC = () => {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false);
 
   const [emailSignup, setEmailSignup] = useState("");
@@ -47,25 +48,24 @@ const Page: FC = () => {
       });
 
       if (result?.ok) {
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
       } else {
-        toast.error("Login failed. Please check your credentials and try again.");
+        toast.error("Login failed. Email or password are incorrect.");
       }
     } catch (err) {
-      console.log(err)
       toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  async function loginWithGoogle() {
+  const loginWithGoogle = async () => {
     setIsLoading(true);
     try {
       const result = await signIn("google", { redirect: false }, { prompt: "login" });
 
       if (result?.ok) {
-        window.location.href = "/dashboard";
+        router.push("/dashboard");
       } else {
         toast.error("Google sign-in failed. Please try again.");
       }
