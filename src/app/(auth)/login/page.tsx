@@ -64,13 +64,7 @@ const Page: FC = () => {
   const loginWithGoogle = async () => {
     setIsLoadingGoogle(true);
     try {
-      const result = await signIn("google", { redirect: false }, { prompt: "login" });
-
-      if (result?.ok) {
-        router.push("/dashboard");
-      } else {
-        toast.error("Google sign-in failed. Please try again.");
-      }
+      await signIn("google", { redirect: false }, { prompt: "login" });
     } catch (err) {
       toast.error("Error signing in. Please try again.");
     } finally {
