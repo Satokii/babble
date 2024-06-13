@@ -11,7 +11,9 @@ import { useRouter } from "next/navigation";
 
 const Page: FC = () => {
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
+  const [isLoadingSignup, setIsLoadingSignup] = useState(false);
+  const [isLoadingLogin, setIsLoadingLogin] = useState(false);
 
   const [emailSignup, setEmailSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
@@ -21,7 +23,7 @@ const Page: FC = () => {
 
   const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsLoadingSignup(true);
     try {
       await axios.post("/api/auth/signup", {
         emailSignup,
@@ -33,13 +35,13 @@ const Page: FC = () => {
     } catch (err) {
       toast.error("Sign up failed. Please try again.");
     } finally {
-      setIsLoading(false);
+      setIsLoadingSignup(false);
     }
   };
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsLoadingLogin(true);
     try {
       const result = await signIn("credentials", {
         redirect: false,
@@ -55,12 +57,12 @@ const Page: FC = () => {
     } catch (err) {
       toast.error("An error occurred. Please try again.");
     } finally {
-      setIsLoading(false);
+      setIsLoadingLogin(false);
     }
   };
 
   const loginWithGoogle = async () => {
-    setIsLoading(true);
+    setIsLoadingGoogle(true);
     try {
       const result = await signIn("google", { redirect: false }, { prompt: "login" });
 
@@ -72,7 +74,7 @@ const Page: FC = () => {
     } catch (err) {
       toast.error("Error signing in. Please try again.");
     } finally {
-      setIsLoading(false);
+      setIsLoadingGoogle(false);
     }
   }
 
@@ -105,7 +107,7 @@ const Page: FC = () => {
               value={passwordSignup}
               onChange={(e) => setPasswordSignup(e.target.value)}
             />
-            <Button isLoading={isLoading} type="submit">Sign Up</Button>
+            <Button isLoading={isLoadingSignup} type="submit">Sign Up</Button>
           </form>
           <form onSubmit={handleLogin}>
             <input
@@ -120,15 +122,15 @@ const Page: FC = () => {
               value={passwordLogin}
               onChange={(e) => setPasswordLogin(e.target.value)}
             />
-            <Button isLoading={isLoading} type="submit">Sign In</Button>
+            <Button isLoading={isLoadingLogin} type="submit">Sign In</Button>
           </form>
           <Button
-            isLoading={isLoading}
+            isLoading={isLoadingGoogle}
             type="button"
             className="flex items-center justify-center w-full py-4 sm:py-6 text-base sm:text-lg font-semibold text-white bg-cyan-700 hover:bg-cyan-900 rounded-lg shadow-md transition-colors duration-300"
             onClick={loginWithGoogle}
           >
-            {isLoading ? null : (
+            {isLoadingGoogle ? null : (
               <svg
                 className="mr-2 h-4 w-4 sm:h-5 sm:w-5"
                 aria-hidden="true"
