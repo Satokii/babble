@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { fetchRedis } from "@/helpers/redis";
 import { db } from "@/lib/db";
+import DefaultUserImg from "@/public/default-user-img.png"
 
 const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require('uuid');
@@ -22,7 +23,7 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
         id: userId,
         email: emailSignup,
         password: hashedPassword,
-        image: "",
+        image: DefaultUserImg,
         name: "test name"
       };
 
