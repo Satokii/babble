@@ -32,8 +32,8 @@ const Page: FC = () => {
     e.preventDefault();
     await signIn("credentials", {
       redirect: false,
-      emailLogin,
-      passwordLogin,
+      email: emailLogin,
+      password: passwordLogin,
     });
   };
 
