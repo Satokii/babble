@@ -20,27 +20,55 @@ const Page: FC = () => {
 
   const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    await axios.post("/api/auth/signup", {
-      emailSignup,
-      passwordSignup,
-    });
-    setEmailSignup("")
-    setPasswordSignup("")
+    setIsLoading(true);
+    try {
+      await axios.post("/api/auth/signup", {
+        emailSignup,
+        passwordSignup,
+      });
+      setEmailSignup("");
+      setPasswordSignup("");
+      toast.success("Sign up successful. Please log in.");
+    } catch (err) {
+      toast.error("Sign up failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    await signIn("credentials", {
-      redirect: false,
-      email: emailLogin,
-      password: passwordLogin,
-    });
+    setIsLoading(true);
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: emailLogin,
+        password: passwordLogin,
+      });
+
+      if (result?.ok) {
+        window.location.href = "/dashboard";
+      } else {
+        toast.error("Login failed. Please check your credentials and try again.");
+      }
+    } catch (err) {
+      console.log(err)
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   async function loginWithGoogle() {
     setIsLoading(true);
     try {
-      await signIn("google", { redirect: false }, { prompt: "login" });
+      const result = await signIn("google", { redirect: false }, { prompt: "login" });
+
+      if (result?.ok) {
+        window.location.href = "/dashboard";
+      } else {
+        toast.error("Google sign-in failed. Please try again.");
+      }
     } catch (err) {
       toast.error("Error signing in. Please try again.");
     } finally {
@@ -77,7 +105,7 @@ const Page: FC = () => {
               value={passwordSignup}
               onChange={(e) => setPasswordSignup(e.target.value)}
             />
-            <button type="submit">Sign Up</button>
+            <Button isLoading={isLoading} type="submit">Sign Up</Button>
           </form>
           <form onSubmit={handleLogin}>
             <input
@@ -92,7 +120,7 @@ const Page: FC = () => {
               value={passwordLogin}
               onChange={(e) => setPasswordLogin(e.target.value)}
             />
-            <button type="submit">Sign In</button>
+            <Button isLoading={isLoading} type="submit">Sign In</Button>
           </form>
           <Button
             isLoading={isLoading}
