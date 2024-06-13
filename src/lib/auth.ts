@@ -26,17 +26,27 @@ export const authOptions: NextAuthOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+       async authorize(credentials) {
+        if (!credentials) {
+          throw new Error("Missing credentials");
+        }
+
+        const { email, password } = credentials;
+        
+        if (!email || !password) {
+          throw new Error("Email and password are required");
+        }
 
         try {
-        const { email, password } = credentials!;
-
           const userResult = await fetchRedis("get", `user:email:${email}`);
           if (!userResult) {
             throw new Error("No user found with this email.");
           }
 
           const userData = await fetchRedis("get", `user:${userResult}`);
+          if (!userData) {
+            throw new Error("Failed to fetch user data");
+          }
 
           const user = JSON.parse(userData);
 
@@ -44,9 +54,11 @@ export const authOptions: NextAuthOptions = {
           if (!isValidPassword) {
             throw new Error("Invalid password");
           }
+
           return user;
         } catch (err) {
-          console.error(err)
+          console.error("Authorize error:", err);
+          throw new Error("Authorization failed");
         }
       },
     }),
