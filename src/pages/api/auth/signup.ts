@@ -13,7 +13,7 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const existingUser = await fetchRedis("get", `user:email:${emailSignup}`);
       if (existingUser) {
-        return res.status(400).json({ message: "User already exists." });
+        return res.status(400).json({ message: "An account has already been created with this email." });
       }
 
       if (!emailSignup || !nameSignup || !passwordSignup) {
