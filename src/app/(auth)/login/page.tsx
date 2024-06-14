@@ -72,20 +72,25 @@ const Page: FC = () => {
               Sign up.
             </Link>
           </div>
-          <form onSubmit={handleLogin}>
+          <form
+            onSubmit={handleLogin}
+            className="space-y-4 max-w-md mx-auto p-4 border rounded-lg shadow-md"
+          >
             <input
               type="email"
               placeholder="Email"
               value={emailLogin}
               onChange={(e) => setEmailLogin(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-cyan-500"
             />
             <input
               type="password"
               placeholder="Password"
               value={passwordLogin}
               onChange={(e) => setPasswordLogin(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-cyan-500"
             />
-            <Button isLoading={isLoadingLogin} type="submit">
+            <Button className="w-full" isLoading={isLoadingLogin} type="submit">
               Sign In
             </Button>
           </form>
