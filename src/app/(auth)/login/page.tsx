@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import LogoImage from "@/public/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Page: FC = () => {
   const router = useRouter();
@@ -64,6 +65,12 @@ const Page: FC = () => {
               height={100}
               className="rounded-full"
             />
+          </div>
+          <div className="flex items-center justify-center gap-1 text-lg">
+            <p className="m-0">Need an account?</p>
+            <Link href="/signup" className="text-cyan-500 hover:text-cyan-700">
+              Sign up.
+            </Link>
           </div>
           <form onSubmit={handleLogin}>
             <input
