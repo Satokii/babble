@@ -5,12 +5,12 @@ import Image from "next/image";
 export const Icons = {
   Logo: (props: LucideProps) => (
     <Image
-      layout="fill"
-      objectFit="contain"
+      fill
       referrerPolicy="no-referrer"
       src={LogoImage}
       alt="App logo"
       className="rounded-full"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
   ),
   UserPlus,
