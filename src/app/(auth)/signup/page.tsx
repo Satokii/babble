@@ -7,6 +7,7 @@ import LogoImage from "@/public/logo.png";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Page: FC = () => {
   const router = useRouter();
@@ -52,6 +53,12 @@ const Page: FC = () => {
               height={100}
               className="rounded-full"
             />
+          </div>
+          <div className="flex items-center justify-center gap-1 text-lg">
+            <p className="m-0">Already have an account?</p>
+            <Link href="/login" className="text-cyan-500 hover:text-cyan-700">
+              Login.
+            </Link>
           </div>
           <form
             onSubmit={handleSignup}
