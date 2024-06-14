@@ -20,6 +20,13 @@ const Page: FC = () => {
   const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsLoadingSignup(true);
+
+    if (!emailSignup || !nameSignup || !passwordSignup) {
+      toast.error("All fields need to be completed.");
+      setIsLoadingSignup(false);
+      return;
+    }
+
     try {
       await axios.post("/api/auth/signup", {
         emailSignup,
