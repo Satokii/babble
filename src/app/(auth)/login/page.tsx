@@ -32,6 +32,7 @@ const Page: FC = () => {
         passwordSignup,
       });
       setEmailSignup("");
+      setNameSignup("");
       setPasswordSignup("");
       toast.success("Sign up successful. Please log in.");
     } catch (err) {
