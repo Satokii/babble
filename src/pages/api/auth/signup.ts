@@ -9,7 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     try {
-      const { emailSignup, passwordSignup } = req.body;
+      const { emailSignup, nameSignup, passwordSignup } = req.body;
 
       const existingUser = await fetchRedis("get", `user:email:${emailSignup}`);
       if (existingUser) {
@@ -24,7 +24,7 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
         email: emailSignup,
         password: hashedPassword,
         image: DefaultUserImg,
-        name: "test name"
+        name: nameSignup
       };
 
       await db.set(`user:${userId}`, JSON.stringify(user));
