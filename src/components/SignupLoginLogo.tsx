@@ -3,7 +3,6 @@
 import { FC } from "react";
 import Image from "next/image";
 import LogoImage from "@/public/logo.png";
-import Link from "next/link";
 
 const SignupLoginLogo: FC = ({}) => {
   return (
@@ -17,12 +16,6 @@ const SignupLoginLogo: FC = ({}) => {
           height={100}
           className="rounded-full"
         />
-      </div>
-      <div className="flex items-center justify-center gap-1 text-lg">
-        <p className="m-0">Already have an account?</p>
-        <Link href="/login" className="text-cyan-500 hover:text-cyan-700">
-          Login.
-        </Link>
       </div>
     </>
   );
