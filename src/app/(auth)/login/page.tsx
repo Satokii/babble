@@ -10,12 +10,13 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const Page: FC = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
   const [isLoadingSignup, setIsLoadingSignup] = useState(false);
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
 
   const [emailSignup, setEmailSignup] = useState("");
+  const [nameSignup, setNameSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
 
   const [emailLogin, setEmailLogin] = useState("");
@@ -27,6 +28,7 @@ const Page: FC = () => {
     try {
       await axios.post("/api/auth/signup", {
         emailSignup,
+        nameSignup,
         passwordSignup,
       });
       setEmailSignup("");
@@ -70,7 +72,7 @@ const Page: FC = () => {
     } finally {
       setIsLoadingGoogle(false);
     }
-  }
+  };
 
   return (
     <>
@@ -96,12 +98,20 @@ const Page: FC = () => {
               onChange={(e) => setEmailSignup(e.target.value)}
             />
             <input
+              type="text"
+              placeholder="Display Name"
+              value={nameSignup}
+              onChange={(e) => setNameSignup(e.target.value)}
+            />
+            <input
               type="password"
               placeholder="Password"
               value={passwordSignup}
               onChange={(e) => setPasswordSignup(e.target.value)}
             />
-            <Button isLoading={isLoadingSignup} type="submit">Sign Up</Button>
+            <Button isLoading={isLoadingSignup} type="submit">
+              Sign Up
+            </Button>
           </form>
           <form onSubmit={handleLogin}>
             <input
@@ -116,7 +126,9 @@ const Page: FC = () => {
               value={passwordLogin}
               onChange={(e) => setPasswordLogin(e.target.value)}
             />
-            <Button isLoading={isLoadingLogin} type="submit">Sign In</Button>
+            <Button isLoading={isLoadingLogin} type="submit">
+              Sign In
+            </Button>
           </form>
           <Button
             isLoading={isLoadingGoogle}
