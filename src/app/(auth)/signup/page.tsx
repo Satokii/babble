@@ -28,7 +28,7 @@ const Page: FC = () => {
       setEmailSignup("");
       setNameSignup("");
       setPasswordSignup("");
-      router.push("/login")
+      router.push("/login");
       toast.success("Sign up successful. Please log in.");
     } catch (err) {
       toast.error("Sign up failed. Please try again.");
@@ -53,30 +53,39 @@ const Page: FC = () => {
               className="rounded-full"
             />
           </div>
-          <form onSubmit={handleSignup}>
+          <form
+            onSubmit={handleSignup}
+            className="space-y-4 max-w-md mx-auto p-4 border rounded-lg shadow-md"
+          >
             <input
               type="email"
               placeholder="Email"
               value={emailSignup}
               onChange={(e) => setEmailSignup(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-cyan-500"
             />
             <input
               type="text"
               placeholder="Display Name"
               value={nameSignup}
               onChange={(e) => setNameSignup(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-cyan-500"
             />
             <input
               type="password"
               placeholder="Password"
               value={passwordSignup}
               onChange={(e) => setPasswordSignup(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-cyan-500"
             />
-            <Button isLoading={isLoadingSignup} type="submit">
+            <Button
+              className="w-full"
+              isLoading={isLoadingSignup}
+              type="submit"
+            >
               Sign Up
             </Button>
           </form>
-          
         </div>
       </div>
     </>
