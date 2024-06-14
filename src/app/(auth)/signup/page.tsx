@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 import toast from "react-hot-toast";
 import LogoImage from "@/public/logo.png";
 import Image from "next/image";
-import axios, { Axios, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -16,17 +16,10 @@ const Page: FC = () => {
   const [emailSignup, setEmailSignup] = useState("");
   const [nameSignup, setNameSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
-  const [signupError, setSignupError] = useState("")
 
   const handleSignup = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsLoadingSignup(true);
-
-    if (!emailSignup || !nameSignup || !passwordSignup) {
-      toast.error("All fields need to be completed.");
-      setIsLoadingSignup(false);
-      return;
-    }
 
     try {
       await axios.post("/api/auth/signup", {

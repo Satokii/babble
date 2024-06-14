@@ -16,6 +16,10 @@ const handleSignup = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(400).json({ message: "User already exists." });
       }
 
+      if (!emailSignup || !nameSignup || !passwordSignup) {
+        return res.status(400).json({ message: "All fields need to be completed." });
+      }
+
       const hashedPassword = await bcrypt.hash(passwordSignup, 10);
 
       const userId = uuidv4();
