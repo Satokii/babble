@@ -1,9 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import LogoImage from "@/public/logo.png";
-import Image from "next/image";
-import Link from "next/link";
 import LoginForm from "@/components/LoginForm";
 import GoogleLogin from "@/components/GoogleLogin";
 import SignupLoginLogo from "@/components/SignupLoginLogo";
