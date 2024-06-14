@@ -83,7 +83,10 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
           return unreadMessage.senderId === friend.id;
         }).length;
         return (
-          <li key={friend.id} className="border-b border-cyan-400 transition duration-200 ease-in-out hover:border-transparent">
+          <li
+            key={friend.id}
+            className="border-b border-cyan-400 transition duration-200 ease-in-out hover:border-transparent"
+          >
             <a
               href={`/dashboard/chat/${chatHrefConstructor(
                 sessionId,
@@ -98,6 +101,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                   className="rounded-full"
                   src={friend.image || ""}
                   alt="Chat friend profile picture"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               {friend.name}

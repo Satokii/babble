@@ -92,6 +92,7 @@ const Layout = async ({ children }: LayoutProps) => {
                     className="rounded-full"
                     src={session?.user.image || ""}
                     alt="User profile picture"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 

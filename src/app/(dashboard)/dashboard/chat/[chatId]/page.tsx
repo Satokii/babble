@@ -70,6 +70,7 @@ const page = async ({ params }: PageProps) => {
               src={chatFriend.image}
               alt={`${chatFriend.name} profile photo`}
               className="rounded-full"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <div className="flex flex-col leading-tight">
