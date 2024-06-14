@@ -6,41 +6,15 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import LogoImage from "@/public/logo.png";
 import Image from "next/image";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const Page: FC = () => {
   const router = useRouter();
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
-  const [isLoadingSignup, setIsLoadingSignup] = useState(false);
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
-
-  const [emailSignup, setEmailSignup] = useState("");
-  const [nameSignup, setNameSignup] = useState("");
-  const [passwordSignup, setPasswordSignup] = useState("");
 
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
-
-  const handleSignup = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setIsLoadingSignup(true);
-    try {
-      await axios.post("/api/auth/signup", {
-        emailSignup,
-        nameSignup,
-        passwordSignup,
-      });
-      setEmailSignup("");
-      setNameSignup("");
-      setPasswordSignup("");
-      toast.success("Sign up successful. Please log in.");
-    } catch (err) {
-      toast.error("Sign up failed. Please try again.");
-    } finally {
-      setIsLoadingSignup(false);
-    }
-  };
 
   const handleLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -91,29 +65,6 @@ const Page: FC = () => {
               className="rounded-full"
             />
           </div>
-          <form onSubmit={handleSignup}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={emailSignup}
-              onChange={(e) => setEmailSignup(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Display Name"
-              value={nameSignup}
-              onChange={(e) => setNameSignup(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={passwordSignup}
-              onChange={(e) => setPasswordSignup(e.target.value)}
-            />
-            <Button isLoading={isLoadingSignup} type="submit">
-              Sign Up
-            </Button>
-          </form>
           <form onSubmit={handleLogin}>
             <input
               type="email"
