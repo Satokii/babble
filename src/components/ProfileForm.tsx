@@ -19,11 +19,11 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, onSubmit, onCancel }) =
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
-          <Image
+          {/* <Image
             src={user.image}
             alt="Profile"
             className="h-24 w-24 rounded-full object-cover"
-          />
+          /> */}
           <label
             htmlFor="image"
             className="absolute bottom-0 right-0 bg-cyan-500 p-2 rounded-full cursor-pointer text-white"

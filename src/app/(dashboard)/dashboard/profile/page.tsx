@@ -1,7 +1,8 @@
 "use client"
 
-// /pages/profile.tsx
 import { useState } from 'react';
+import ProfileDetails from '@/components/ProfileDetails';
+import ProfileForm from '@/components/ProfileForm';
 
 interface ProfilePageProps {
   user: User;

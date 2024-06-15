@@ -12,11 +12,11 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user, onEdit }) => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
-        <Image
+        {/* <Image
           src={user.image}
           alt="Profile"
           className="h-24 w-24 rounded-full object-cover"
-        />
+        /> */}
         <div className="text-center">
           <h2 className="text-xl font-bold text-gray-900">{user.name}</h2>
           <p className="text-sm text-gray-600">{user.email}</p>
