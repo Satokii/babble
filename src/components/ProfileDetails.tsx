@@ -1,25 +1,38 @@
-"use client"
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface ProfileDetailsProps {
   user: User;
+  userName: string;
+  userEmail: string;
+  userImage: string | null | undefined;
   onEdit: () => void;
 }
 
-const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user, onEdit }) => {
+const ProfileDetails: React.FC<ProfileDetailsProps> = ({
+  user,
+  userName,
+  userEmail,
+  userImage,
+  onEdit,
+}) => {
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
-        {/* <Image
-          src={user.image}
-          alt="Profile"
-          className="h-24 w-24 rounded-full object-cover"
-        /> */}
+        <Image
+          width={100}
+          height={100}
+          referrerPolicy="no-referrer"
+          className="rounded-full"
+          src={userImage || ""}
+          alt="User profile picture"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
         <div className="text-center">
-          <h2 className="text-xl font-bold text-gray-900">{user.name}</h2>
-          <p className="text-sm text-gray-600">{user.email}</p>
+          <h2 className="text-xl font-bold text-gray-900">{userName}</h2>
+          <p className="text-sm text-gray-600">{userEmail}</p>
         </div>
         <button
           onClick={onEdit}
