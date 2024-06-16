@@ -9,7 +9,8 @@ interface ProfileFormProps {
   userName: string;
   userEmail: string;
   userImage: string | null | undefined;
-  onCancel: () => void;
+  handleCancel: () => void;
+  handleSubmit: (data: User) => void;
 }
 
 const ProfileForm: React.FC<ProfileFormProps> = ({
@@ -17,6 +18,8 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
   userName,
   userEmail,
   userImage,
+  handleCancel,
+  handleSubmit,
 }) => {
   const {
     register,
@@ -24,13 +27,6 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
   } = useForm<User>({
     defaultValues: user,
   });
-
-  const handleSubmit = () => {
-    console.log("submit changes");
-  };
-  const handleCancel = () => {
-    console.log("cancel changes");
-  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">

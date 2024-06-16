@@ -8,7 +8,7 @@ interface ProfileDetailsProps {
   userName: string | null | undefined;
   userEmail: string | null | undefined;
   userImage: string | null | undefined;
-  onEdit: () => void;
+  handleEdit: () => void;
 }
 
 const ProfileDetails: FC<ProfileDetailsProps> = ({
@@ -16,7 +16,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({
   userName,
   userEmail,
   userImage,
-  onEdit,
+  handleEdit,
 }) => {
   return (
     <div className="space-y-6">
@@ -35,7 +35,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({
           <p className="text-sm text-gray-600">{userEmail}</p>
         </div>
         <button
-          onClick={onEdit}
+          onClick={handleEdit}
           className="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
         >
           Edit Profile
