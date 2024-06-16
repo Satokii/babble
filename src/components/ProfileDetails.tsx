@@ -1,18 +1,18 @@
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import Image from "next/image";
 
 interface ProfileDetailsProps {
-  user: User;
-  userName: string;
-  userEmail: string;
+  // user: User;
+  userName: string | null | undefined;
+  userEmail: string | null | undefined;
   userImage: string | null | undefined;
   onEdit: () => void;
 }
 
-const ProfileDetails: React.FC<ProfileDetailsProps> = ({
-  user,
+const ProfileDetails: FC<ProfileDetailsProps> = ({
+  // user,
   userName,
   userEmail,
   userImage,

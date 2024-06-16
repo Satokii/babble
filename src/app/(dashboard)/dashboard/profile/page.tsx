@@ -4,7 +4,6 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { notFound } from 'next/navigation';
 
-
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);
 
@@ -37,7 +36,7 @@ const ProfilePage = async () => {
           <ProfileDetails user={session?.user} onEdit={handleEdit} />
         )} */}
           <ProfileForm user={session?.user} userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} />
-          <ProfileDetails user={session?.user} userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} />
+          <ProfileDetails userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} />
       </div>
     </div>
   );
