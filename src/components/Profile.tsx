@@ -1,11 +1,38 @@
-import { FC } from 'react'
+"use client"
+
+import React, { useState } from 'react';
+import ProfileDetails from '@/components/ProfileDetails';
+import ProfileForm from '@/components/ProfileForm';
 
 interface ProfileProps {
-  
+  user: User;
 }
 
-const Profile: FC<ProfileProps> = ({}) => {
-  return <div>Profile</div>
-}
+const Profile: React.FC<ProfileProps> = ({ user }) => {
+  const [isEditing, setIsEditing] = useState(false);
 
-export default Profile
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+  };
+
+  const handleSubmit = async (data: User) => {
+    console.log(data);
+    setIsEditing(false);
+  };
+
+  return (
+    <div>
+      {isEditing ? (
+        <ProfileForm userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} onSubmit={handleSubmit} onCancel={handleCancel} />
+      ) : (
+        <ProfileDetails userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} onEdit={handleEdit} />
+      )}
+    </div>
+  );
+};
+
+export default Profile;
