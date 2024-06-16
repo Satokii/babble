@@ -27,9 +27,9 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
   return (
     <div>
       {isEditing ? (
-        <ProfileForm userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} onSubmit={handleSubmit} onCancel={handleCancel} />
+        <ProfileForm userName={user.name} userEmail={user.email} userImage={user.image} onSubmit={handleSubmit} onCancel={handleCancel} />
       ) : (
-        <ProfileDetails userName={session.user.name} userEmail={session.user.email} userImage={session.user.image} onEdit={handleEdit} />
+        <ProfileDetails userName={user.name} userEmail={user.email} userImage={user.image} onEdit={handleEdit} />
       )}
     </div>
   );
