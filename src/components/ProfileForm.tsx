@@ -1,23 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 
 interface ProfileFormProps {
   user: User;
-  userName: string;
-  userEmail: string;
-  userImage: string | null | undefined;
   handleCancel: () => void;
   handleSubmit: (data: User) => void;
 }
 
-const ProfileForm: React.FC<ProfileFormProps> = ({
+const ProfileForm: FC<ProfileFormProps> = ({
   user,
-  userName,
-  userEmail,
-  userImage,
   handleCancel,
   handleSubmit,
 }) => {
@@ -37,7 +31,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
             height={100}
             referrerPolicy="no-referrer"
             className="rounded-full"
-            src={userImage || ""}
+            src={user.image || ""}
             alt="User profile picture"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />

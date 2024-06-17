@@ -4,18 +4,12 @@ import { FC } from "react";
 import Image from "next/image";
 
 interface ProfileDetailsProps {
-  // user: User;
-  userName: string | null | undefined;
-  userEmail: string | null | undefined;
-  userImage: string | null | undefined;
+  user: User;
   handleEdit: () => void;
 }
 
 const ProfileDetails: FC<ProfileDetailsProps> = ({
-  // user,
-  userName,
-  userEmail,
-  userImage,
+  user,
   handleEdit,
 }) => {
   return (
@@ -26,13 +20,13 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({
           height={100}
           referrerPolicy="no-referrer"
           className="rounded-full"
-          src={userImage || ""}
+          src={user.image || ""}
           alt="User profile picture"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="text-center">
-          <h2 className="text-xl font-bold text-gray-900">{userName}</h2>
-          <p className="text-sm text-gray-600">{userEmail}</p>
+          <h2 className="text-xl font-bold text-gray-900">{user.name}</h2>
+          <p className="text-sm text-gray-600">{user.email}</p>
         </div>
         <button
           onClick={handleEdit}

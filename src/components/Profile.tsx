@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import ProfileDetails from '@/components/ProfileDetails';
 import ProfileForm from '@/components/ProfileForm';
 
@@ -8,7 +8,7 @@ interface ProfileProps {
   user: User;
 }
 
-const Profile: React.FC<ProfileProps> = ({ user }) => {
+const Profile: FC<ProfileProps> = ({ user }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
@@ -27,9 +27,9 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
   return (
     <div>
       {isEditing ? (
-        <ProfileForm userName={user.name} userEmail={user.email} userImage={user.image} handleSubmit={handleSubmit} handleCancel={handleCancel} />
+        <ProfileForm user={user} handleSubmit={handleSubmit} handleCancel={handleCancel} />
       ) : (
-        <ProfileDetails userName={user.name} userEmail={user.email} userImage={user.image} handleEdit={handleEdit} />
+        <ProfileDetails user={user} handleEdit={handleEdit} />
       )}
     </div>
   );
