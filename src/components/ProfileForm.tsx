@@ -2,6 +2,7 @@
 
 import { updateProfileValidator } from "@/lib/validations/update-profile";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import Image from "next/image";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
@@ -30,19 +31,14 @@ const ProfileForm: FC<ProfileFormProps> = ({
   const submitData = async (data: FormData) => {
     console.log(data)
     try {
-      const response = await fetch('/api/profie/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      await axios.post("/api/profile/update", {
+        data: JSON.stringify(data)
       });
-
-      if (response.ok) {
-        console.log('User data updated successfully');
-      } else {
-        console.error('Failed to update user data');
-      }
+      // if (response.ok) {
+      //   console.log('User data updated successfully');
+      // } else {
+      //   console.error('Failed to update user data');
+      // }
     } catch (error) {
       console.error('Error updating user data:', error);
     }

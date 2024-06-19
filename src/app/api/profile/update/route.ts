@@ -1,20 +1,23 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchRedis } from '@/helpers/redis';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   if (req.method === 'POST') {
-    const { name, email, image } = req.body;
+    const body = await req.json();
 
-    try {
-      const userKey = `user:${email}`;
+    console.log(body)
+//     const { name, email, image } = req.body;
 
-      await fetchRedis('hset', userKey, 'name', name, 'email', email, 'image', image);
+//     try {
+//       const userKey = `user:${email}`;
 
-      res.status(200).json({ message: 'Profile updated successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Error updating profile' });
-    }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
+//       await fetchRedis('hset', userKey, 'name', name, 'email', email, 'image', image);
+
+//       res.status(200).json({ message: 'Profile updated successfully' });
+//     } catch (error) {
+//       res.status(500).json({ error: 'Error updating profile' });
+//     }
+//   } else {
+//     res.status(405).json({ error: 'Method not allowed' });
   }
 }
