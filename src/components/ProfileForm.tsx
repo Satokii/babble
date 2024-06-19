@@ -10,7 +10,6 @@ import { z } from "zod";
 interface ProfileFormProps {
   user: User;
   closeForm: () => void;
-  // handleSubmit: (data: User) => void;
 }
 
 type FormData = z.infer<typeof updateProfileValidator>;
@@ -18,7 +17,6 @@ type FormData = z.infer<typeof updateProfileValidator>;
 const ProfileForm: FC<ProfileFormProps> = ({
   user,
   closeForm,
-  // handleSubmit,
 }) => {
   const {
     register,

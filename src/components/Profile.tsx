@@ -19,11 +19,6 @@ const Profile: FC<ProfileProps> = ({ user }) => {
     setIsEditing(false);
   };
 
-  // const handleSubmit = async (data: User) => {
-  //   console.log(data);
-  //   setIsEditing(false);
-  // };
-
   return (
     <div>
       {isEditing ? (
