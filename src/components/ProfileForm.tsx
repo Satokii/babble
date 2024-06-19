@@ -1,29 +1,40 @@
 "use client";
 
+import { updateProfileValidator } from "@/lib/validations/update-profile";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface ProfileFormProps {
   user: User;
   handleCancel: () => void;
-  handleSubmit: (data: User) => void;
+  // handleSubmit: (data: User) => void;
 }
+
+type FormData = z.infer<typeof updateProfileValidator>;
 
 const ProfileForm: FC<ProfileFormProps> = ({
   user,
   handleCancel,
-  handleSubmit,
+  // handleSubmit,
 }) => {
   const {
     register,
+    handleSubmit,
     formState: { errors },
   } = useForm<User>({
     defaultValues: user,
+    resolver: zodResolver(updateProfileValidator),
   });
 
+  const submitData = (data: FormData) => {
+    console.log(data)
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit(submitData)} className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <Image

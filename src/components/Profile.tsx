@@ -27,7 +27,7 @@ const Profile: FC<ProfileProps> = ({ user }) => {
   return (
     <div>
       {isEditing ? (
-        <ProfileForm user={user} handleSubmit={handleSubmit} handleCancel={handleCancel} />
+        <ProfileForm user={user} handleCancel={handleCancel} />
       ) : (
         <ProfileDetails user={user} handleEdit={handleEdit} />
       )}
