@@ -19,5 +19,6 @@ export async function POST(req: Request) {
 //     }
 //   } else {
 //     res.status(405).json({ error: 'Method not allowed' });
+return new Response("OK")
   }
 }
