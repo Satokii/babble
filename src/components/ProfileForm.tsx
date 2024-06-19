@@ -9,7 +9,7 @@ import { z } from "zod";
 
 interface ProfileFormProps {
   user: User;
-  handleCancel: () => void;
+  closeForm: () => void;
   // handleSubmit: (data: User) => void;
 }
 
@@ -17,7 +17,7 @@ type FormData = z.infer<typeof updateProfileValidator>;
 
 const ProfileForm: FC<ProfileFormProps> = ({
   user,
-  handleCancel,
+  closeForm,
   // handleSubmit,
 }) => {
   const {
@@ -116,7 +116,7 @@ const ProfileForm: FC<ProfileFormProps> = ({
           </button>
           <button
             type="button"
-            onClick={handleCancel}
+            onClick={closeForm}
             className="py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
           >
             Cancel

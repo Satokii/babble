@@ -15,19 +15,19 @@ const Profile: FC<ProfileProps> = ({ user }) => {
     setIsEditing(true);
   };
 
-  const handleCancel = () => {
+  const closeForm = () => {
     setIsEditing(false);
   };
 
-  const handleSubmit = async (data: User) => {
-    console.log(data);
-    setIsEditing(false);
-  };
+  // const handleSubmit = async (data: User) => {
+  //   console.log(data);
+  //   setIsEditing(false);
+  // };
 
   return (
     <div>
       {isEditing ? (
-        <ProfileForm user={user} handleCancel={handleCancel} />
+        <ProfileForm user={user} closeForm={closeForm} />
       ) : (
         <ProfileDetails user={user} handleEdit={handleEdit} />
       )}
