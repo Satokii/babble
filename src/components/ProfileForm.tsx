@@ -31,8 +31,9 @@ const ProfileForm: FC<ProfileFormProps> = ({
 
   const submitData = (data: FormData) => {
     console.log(data)
+    closeForm()
   }
-
+  
   return (
     <form onSubmit={handleSubmit(submitData)} className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
