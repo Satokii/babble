@@ -27,8 +27,25 @@ const ProfileForm: FC<ProfileFormProps> = ({
     resolver: zodResolver(updateProfileValidator),
   });
 
-  const submitData = (data: FormData) => {
+  const submitData = async (data: FormData) => {
     console.log(data)
+    try {
+      const response = await fetch('/api/profie/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        console.log('User data updated successfully');
+      } else {
+        console.error('Failed to update user data');
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
     closeForm()
   }
   
