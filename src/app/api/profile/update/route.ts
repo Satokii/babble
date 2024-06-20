@@ -1,24 +1,40 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchRedis } from '@/helpers/redis';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { db } from '@/lib/db';
 
 export async function POST(req: Request) {
   if (req.method === 'POST') {
     const body = await req.json();
 
-    console.log(body)
-//     const { name, email, image } = req.body;
+    const { name, email, image } = body.data;
 
-//     try {
-//       const userKey = `user:${email}`;
+    const session = await getServerSession(authOptions);
 
-//       await fetchRedis('hset', userKey, 'name', name, 'email', email, 'image', image);
+    if (!session) {
+      return new Response("Unauthorized", { status: 401 });
+    }
 
-//       res.status(200).json({ message: 'Profile updated successfully' });
-//     } catch (error) {
-//       res.status(500).json({ error: 'Error updating profile' });
-//     }
-//   } else {
-//     res.status(405).json({ error: 'Method not allowed' });
-return new Response("OK")
+    const userId = session.user.id as string
+     console.log(userId)
+
+    try {
+        const userKey = `user:${userId}`;
+        const userEmailKey = `user:email:${email}`;
+  
+        const updatedUser = { userId, name, email, image };
+
+        await fetchRedis('set', userKey, JSON.stringify(updatedUser));
+        await fetchRedis('set', userEmailKey, userId);
+
+    return new Response("Profile updated successfully")
+
+    } catch (error) {
+        console.log(error)
+        return new Response("Error updating profile", { status: 500 })
+    }
+  } else {
+    console.log("Unable to update")
+    return new Response("Method not allowed", { status: 405 })
   }
 }

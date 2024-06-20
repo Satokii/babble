@@ -32,7 +32,7 @@ const ProfileForm: FC<ProfileFormProps> = ({
     console.log(data)
     try {
       await axios.post("/api/profile/update", {
-        data: JSON.stringify(data)
+        data
       });
       // if (response.ok) {
       //   console.log('User data updated successfully');
