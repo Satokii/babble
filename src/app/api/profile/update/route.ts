@@ -1,4 +1,3 @@
-import { fetchRedis } from "@/helpers/redis";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
