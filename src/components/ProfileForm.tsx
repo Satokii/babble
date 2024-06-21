@@ -34,11 +34,6 @@ const ProfileForm: FC<ProfileFormProps> = ({
       await axios.post("/api/profile/update", {
         data
       });
-      // if (response.ok) {
-      //   console.log('User data updated successfully');
-      // } else {
-      //   console.error('Failed to update user data');
-      // }
     } catch (error) {
       console.error('Error updating user data:', error);
     }
