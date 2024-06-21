@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   if (req.method === "POST") {
     const body = await req.json();
 
-    const { name, email, image } = body.data;
+    const { name, email } = body.data;
 
     const session = await getServerSession(authOptions);
 
@@ -17,9 +17,9 @@ export async function POST(req: Request) {
 
     const user = session.user
     const userId = session.user.id;
-
+    console.log(user)
     try {
-      const updatedUser = {...user, name, email, image}
+      const updatedUser = {...user, name, email}
 
       await db.set(`user:${userId}`, JSON.stringify(updatedUser));
       await db.set(`user:email:${email}`, userId);
