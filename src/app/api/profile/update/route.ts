@@ -15,13 +15,11 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    const userId = session.user.id;
-    console.log("userId", userId)
     const user = session.user
+    const userId = session.user.id;
 
     try {
       const updatedUser = {...user, name, email, image}
-      console.log("updated", updatedUser)
 
       await db.set(`user:${userId}`, JSON.stringify(updatedUser));
       await db.set(`user:email:${email}`, userId);
