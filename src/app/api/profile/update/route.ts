@@ -17,7 +17,6 @@ export async function POST(req: Request) {
 
     const user = session.user
     const userId = session.user.id;
-    console.log(user)
     try {
       const updatedUser = {...user, name, email}
 
