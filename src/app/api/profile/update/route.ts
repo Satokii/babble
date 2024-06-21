@@ -23,6 +23,7 @@ export async function POST(req: Request) {
 
       await db.set(`user:${userId}`, JSON.stringify(updatedUser));
       await db.set(`user:email:${email}`, userId);
+      await db.del(`user:email:${session.user.email}`, userId)
       return new Response("Profile updated successfully");
     } catch (error) {
       console.log(error);
