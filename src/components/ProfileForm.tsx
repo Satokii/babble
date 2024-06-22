@@ -2,10 +2,11 @@
 
 import { updateProfileValidator } from "@/lib/validations/update-profile";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 interface ProfileFormProps {
@@ -34,8 +35,13 @@ const ProfileForm: FC<ProfileFormProps> = ({
       await axios.post("/api/profile/update", {
         data
       });
-    } catch (error) {
-      console.error('Error updating user data:', error);
+      toast.success("Details updated successfully.");
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        toast.error(err.response?.data.message)
+      }
+      console.error('Error updating user data:', err);
+      toast.error("Sorry something went wrong, please try again.")
     }
     closeForm()
   }
