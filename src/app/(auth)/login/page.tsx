@@ -15,7 +15,7 @@ const Page: FC = () => {
           <div className="flex items-center justify-center gap-1 text-lg">
             <p className="m-0">Need an account?</p>
             <Link href="/signup" className="text-cyan-500 hover:text-cyan-700">
-              Signup.
+              Sign up.
             </Link>
           </div>
           <LoginForm />
