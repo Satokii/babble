@@ -15,19 +15,20 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
+    const userId = session.user.id;
+    const user = (await db.get(`user:${userId}`)) as User;
+
     const existingUserWithEmail = await fetchRedis(
       "get",
       `user:email:${email}`
     );
-    if (existingUserWithEmail) {
+
+    if (existingUserWithEmail && email !== session.user.email) {
       return new Response(
         "An account has already been created with this email.",
         { status: 400 }
       );
     }
-
-    const userId = session.user.id;
-    const user = (await db.get(`user:${userId}`)) as User;
 
     try {
       const updatedUser = { ...user, name: name, email: email, image: image };
