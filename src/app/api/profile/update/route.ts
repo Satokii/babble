@@ -14,8 +14,9 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    const user = session.user;
     const userId = session.user.id;
+    const user = await db.get(`user:${userId}`) as User
+
     try {
       const updatedUser = { ...user, name: name, email: email, image: image };
 
@@ -26,6 +27,7 @@ export async function POST(req: Request) {
         await db.del(`user:email:${session.user.email}`, userId);
       }
 
+      console.log(user)
       return new Response("Profile updated successfully");
     } catch (error) {
       console.log(error);
