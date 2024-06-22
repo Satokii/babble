@@ -20,7 +20,6 @@ export async function POST(req: Request) {
       `user:email:${email}`
     );
     if (existingUserWithEmail) {
-      console.log("exisiting email")
       return new Response(
         "An account has already been created with this email.",
         { status: 400 }
