@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { fetchRedis } from "@/helpers/redis";
 
 export async function POST(req: Request) {
   if (req.method === "POST") {
@@ -14,8 +15,20 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
+    const existingUserWithEmail = await fetchRedis(
+      "get",
+      `user:email:${email}`
+    );
+    if (existingUserWithEmail) {
+      console.log("exisiting email")
+      return new Response(
+        "An account has already been created with this email.",
+        { status: 400 }
+      );
+    }
+
     const userId = session.user.id;
-    const user = await db.get(`user:${userId}`) as User
+    const user = (await db.get(`user:${userId}`)) as User;
 
     try {
       const updatedUser = { ...user, name: name, email: email, image: image };
