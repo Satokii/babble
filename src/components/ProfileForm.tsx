@@ -27,13 +27,15 @@ const ProfileForm: FC<ProfileFormProps> = ({ user, closeForm }) => {
   });
 
   const submitData = async (data: FormData) => {
-    console.log(data);
     try {
       await axios.post("/api/profile/update", {
         data,
       });
-      toast.success("Details updated successfully.");
       closeForm();
+      toast.success("Details updated successfully.");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (err) {
       if (err instanceof AxiosError) {
         toast.error(err.response?.data);
