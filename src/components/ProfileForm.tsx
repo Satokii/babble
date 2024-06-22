@@ -38,10 +38,12 @@ const ProfileForm: FC<ProfileFormProps> = ({
       toast.success("Details updated successfully.");
     } catch (err) {
       if (err instanceof AxiosError) {
-        toast.error(err.response?.data.message)
+        toast.error(err.response?.data)
       }
-      console.error('Error updating user data:', err);
-      toast.error("Sorry something went wrong, please try again.")
+      else {
+        console.error('Error updating user data:', err);
+        toast.error("Sorry something went wrong, please try again.")
+      }
     }
     closeForm()
   }
