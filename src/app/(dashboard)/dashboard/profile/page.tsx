@@ -14,7 +14,7 @@ import { FC } from "react";
     if (!session) {
       notFound();
     }
-    // console.log(session)
+
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-lg shadow-lg">
