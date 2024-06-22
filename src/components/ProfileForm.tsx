@@ -16,10 +16,7 @@ interface ProfileFormProps {
 
 type FormData = z.infer<typeof updateProfileValidator>;
 
-const ProfileForm: FC<ProfileFormProps> = ({
-  user,
-  closeForm,
-}) => {
+const ProfileForm: FC<ProfileFormProps> = ({ user, closeForm }) => {
   const {
     register,
     handleSubmit,
@@ -30,24 +27,23 @@ const ProfileForm: FC<ProfileFormProps> = ({
   });
 
   const submitData = async (data: FormData) => {
-    console.log(data)
+    console.log(data);
     try {
       await axios.post("/api/profile/update", {
-        data
+        data,
       });
       toast.success("Details updated successfully.");
+      closeForm();
     } catch (err) {
       if (err instanceof AxiosError) {
-        toast.error(err.response?.data)
-      }
-      else {
-        console.error('Error updating user data:', err);
-        toast.error("Sorry something went wrong, please try again.")
+        toast.error(err.response?.data);
+      } else {
+        console.error("Error updating user data:", err);
+        toast.error("Sorry something went wrong, please try again.");
       }
     }
-    closeForm()
-  }
-  
+  };
+
   return (
     <form onSubmit={handleSubmit(submitData)} className="space-y-6">
       <div className="flex flex-col items-center space-y-4">
