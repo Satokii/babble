@@ -29,6 +29,7 @@ const ProfileForm: FC<ProfileFormProps> = ({
   });
 
   const submitData = async (data: FormData) => {
+    console.log(data)
     try {
       await axios.post("/api/profile/update", {
         data

@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   if (req.method === "POST") {
     const body = await req.json();
 
-    const { name, email } = body.data;
+    const { name, email, image } = body.data;
 
     const session = await getServerSession(authOptions);
 
@@ -14,14 +14,18 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    const user = session.user
+    const user = session.user;
     const userId = session.user.id;
     try {
-      const updatedUser = {...user, name, email}
+      const updatedUser = { ...user, name: name, email: email, image: image };
 
       await db.set(`user:${userId}`, JSON.stringify(updatedUser));
-      await db.set(`user:email:${email}`, userId);
-      await db.del(`user:email:${session.user.email}`, userId)
+
+      if (session.user.email !== email) {
+        await db.set(`user:email:${email}`, userId);
+        await db.del(`user:email:${session.user.email}`, userId);
+      }
+
       return new Response("Profile updated successfully");
     } catch (error) {
       console.log(error);
