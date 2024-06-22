@@ -29,6 +29,15 @@ const Messages: FC<MessagesProps> = ({
     return format(timestamp, "HH:mm");
   };
 
+  const isToday = (date: Date) => {
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  };
+
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}`));
 
@@ -67,9 +76,11 @@ const Messages: FC<MessagesProps> = ({
             key={`${message.id}-${message.timestamp}`}
             className="chat-message"
           >
-            {isLastMessageOfDay && (
+              {isLastMessageOfDay && (
               <div className="text-center text-[0.75rem] sm:text-sm my-3 text-gray-600">
-                {format(new Date(message.timestamp), "dd/MM/yyyy")}
+                {isToday(new Date(message.timestamp))
+                  ? "Today"
+                  : format(new Date(message.timestamp), "dd/MM/yyyy")}
               </div>
             )}
 
