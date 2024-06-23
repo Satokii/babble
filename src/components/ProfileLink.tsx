@@ -1,7 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FC } from "react";
+import { Session } from "next-auth";
 
-const ProfileLink = ({ session }) => {
+interface ProfileLinkProps {
+    session: Session;
+  }
+
+const ProfileLink: FC<ProfileLinkProps> = ({ session }) => {
   return (
     <Link
       href="/dashboard/profile"
