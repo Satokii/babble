@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const ProfileLink = ({}) => {
+const ProfileLink = ({ session }) => {
   return (
     <Link
       href="/dashboard/profile"
