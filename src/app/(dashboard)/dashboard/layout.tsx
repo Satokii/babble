@@ -89,7 +89,7 @@ const Layout = async ({ children }: LayoutProps) => {
               <SignOutBtn />
             </li>
           </ul>
-          <div className="flex text-sm items-center justify-end">Log Out</div>
+          <div className="flex text-gray-700 text-sm font-semibold items-center justify-end">Log Out</div>
         </nav>
       </div>
       <section className="max-h-screen container my-6 sm:my-2 py-16 md:py-12 w-full">
