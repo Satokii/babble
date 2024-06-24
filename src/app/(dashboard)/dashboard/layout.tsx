@@ -90,7 +90,7 @@ const Layout = async ({ children }: LayoutProps) => {
             </li>
           </ul>
           <div className="flex text-gray-700 text-sm font-semibold items-center justify-end transition duration-300 ease-in-out hover:text-white">
-            Log Out
+            <button>Log Out</button>
           </div>
         </nav>
       </div>
