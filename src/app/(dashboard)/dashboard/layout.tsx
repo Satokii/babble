@@ -86,11 +86,10 @@ const Layout = async ({ children }: LayoutProps) => {
 
             <li className="mt-auto flex items-center">
               <ProfileLink session={session} />
-              <SignOutBtn />
             </li>
           </ul>
           <div className="flex text-gray-700 text-sm font-semibold items-center justify-end transition duration-300 ease-in-out hover:text-white">
-            <button>Log Out</button>
+            <SignOutBtn />
           </div>
         </nav>
       </div>
