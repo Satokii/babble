@@ -150,9 +150,11 @@ const MobileLayout: FC<MobileLayoutProps> = ({
 
                             <li className="mt-auto flex items-center">
                               <ProfileLink session={session} />
-                              <SignOutBtn />
                             </li>
                           </ul>
+                          <div className="flex text-gray-700 text-sm font-semibold items-center justify-end transition duration-300 ease-in-out hover:text-white">
+                            <SignOutBtn />
+                          </div>
                         </nav>
                       </div>
                     </div>
