@@ -32,7 +32,7 @@ const SignOutBtn: FC<SignOutBtnProps> = ({ ...props }) => {
           <div>Log Out</div>
         </>
       ) : (
-        <div>Log Out</div>
+        <div className="text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:text-white">Log Out</div>
       )}
     </Button>
   );

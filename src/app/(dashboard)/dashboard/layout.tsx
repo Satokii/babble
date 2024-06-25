@@ -88,7 +88,7 @@ const Layout = async ({ children }: LayoutProps) => {
               <ProfileLink session={session} />
             </li>
           </ul>
-          <div className="flex text-gray-700 text-sm font-semibold items-center justify-end transition duration-300 ease-in-out hover:text-white">
+          <div className="flex items-center justify-end">
             <SignOutBtn />
           </div>
         </nav>
