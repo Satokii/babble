@@ -48,7 +48,7 @@ const ChatTextBox: FC<ChatTextBoxProps> = ({ chatFriend, chatId }) => {
           rows={1}
           value={messageContent}
           onChange={(e) => setMessageContent(e.target.value)}
-          placeholder={`Message ${chatFriend.name}`}
+          placeholder={`Message ${chatFriend.name}...`}
         />
       </div>
       <Button
