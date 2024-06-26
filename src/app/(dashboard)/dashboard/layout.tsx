@@ -43,7 +43,7 @@ const Layout = async ({ children }: LayoutProps) => {
           friendReqCount={requestCount}
         />
       </div>
-      <div className="hidden md:flex flex-col h-full w-full max-w-[16rem] gap-y-6 rounded-lg overflow-y-auto bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg p-4">
+      <div className="hidden md:flex flex-col h-full w-full max-w-[16rem] gap-y-6 rounded-lg overflow-y-auto bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg px-4 pt-4 pb-2">
         <div className="max-w-xs">
           <Link
             href="/dashboard"
