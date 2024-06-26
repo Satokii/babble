@@ -110,6 +110,7 @@ const Messages: FC<MessagesProps> = ({
                   <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
                     {formatTimestamp(message.timestamp)}
                   </span>
+                  <button className="text-xs" onClick={() => console.log("delete")}>Delete</button>
                 </div>
               </div>
               <div
