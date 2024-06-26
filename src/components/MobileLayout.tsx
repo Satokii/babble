@@ -103,7 +103,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         </button>
                       </div>
                     </TransitionChild>
-                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg py-6">
+                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg pt-6 pb-3">
                       <div className="px-4 sm:px-6">
                         <DialogTitle className="text-base font-semibold leading-6 text-gray-900">
                           Menu
