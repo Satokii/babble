@@ -10,6 +10,8 @@ export async function POST(req: Request) {
     if (!session) {
       return new Response("Unauthorized", { status: 401 });
     }
+
+    await db.del(`chat:${chatId}:messages`);
     
  console.log("message deleted")
 }
