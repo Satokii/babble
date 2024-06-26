@@ -29,12 +29,12 @@ const SignOutBtn: FC<SignOutBtnProps> = ({ ...props }) => {
       {signOutUser ? (
         <>
           <Loader2 className="animate-spin h-4 w-4" />
-          <div className="text-sm font-semibold text-purple-600 transition duration-300 ease-in-out hover:text-purple-400">
+          <div className="text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:text-purple-400">
             Log Out
           </div>
         </>
       ) : (
-        <div className="text-sm font-semibold text-purple-600 transition duration-300 ease-in-out hover:text-purple-400">
+        <div className="text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:text-purple-400">
           Log Out
         </div>
       )}
