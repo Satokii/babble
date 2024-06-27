@@ -36,7 +36,7 @@ const Layout = async ({ children }: LayoutProps) => {
 
   return (
     <div className="w-full h-screen bg-gray-50 flex flex-col">
-      <header className="w-full bg-gradient-to-r from-cyan-200 to-teal-300 shadow-lg p-4 flex items-center justify-between">
+      <header className="hidden md:flex w-full bg-gradient-to-r from-cyan-200 to-teal-300 shadow-lg p-4 items-center justify-between">
         <div className="flex items-center">
           <Link
             href="/dashboard"
