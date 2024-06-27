@@ -60,7 +60,7 @@ const Layout = async ({ children }: LayoutProps) => {
             friendReqCount={requestCount}
           />
         </div>
-        <div className="hidden md:flex flex-col h-full max-w-[16rem] gap-y-6 rounded-lg overflow-y-auto bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg px-4 pt-4 pb-2">
+        <div className="hidden md:flex flex-col h-full max-w-[16rem] gap-y-6 rounded-md bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg px-5 pt-4 pb-2">
           {friends.length > 0 ? (
             <div className="text-sm font-semibold leading-6 text-gray-500">
               Chats
