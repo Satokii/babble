@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
-import Image from "next/image";
 import SignOutBtn from "@/components/SignOutBtn";
 import FriendRequestLink from "@/components/FriendRequestLink";
 import { fetchRedis } from "@/helpers/redis";
