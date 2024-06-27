@@ -54,9 +54,9 @@ const Messages: FC<MessagesProps> = ({
     };
   }, [chatId]);
 
-  const deleteMessage = async (messageId: string) => {
+  const deleteMessage = async (messageId: string, messageText: string) => {
     try {
-      await axios.post("/api/message/delete", { messageId });
+      await axios.post("/api/message/delete", { messageId, messageText });
     } catch (err) {
       console.log(err)
     }
@@ -120,7 +120,7 @@ const Messages: FC<MessagesProps> = ({
                   <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
                     {formatTimestamp(message.timestamp)}
                   </span>
-                  <button className="text-xs" onClick={(e) => deleteMessage(message.id)}>Delete</button>
+                  <button className="text-xs" onClick={(e) => deleteMessage(message.id, message.text)}>Delete</button>
                 </div>
               </div>
               <div

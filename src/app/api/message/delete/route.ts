@@ -11,8 +11,7 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    // await db.del(`chat:${chatId}:messages`);
+    await db.zrem(`chat:${messageId}:messages`);
     
- console.log("chat id", messageId)
  return new Response("Message deleted")
 }
