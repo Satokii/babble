@@ -6,6 +6,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import { format, isSameDay } from "date-fns";
 import Image from "next/image";
 import { pusherClient } from "@/lib/pusher";
+import axios from "axios";
 
 interface MessagesProps {
   existingMessages: Message[];
@@ -52,6 +53,15 @@ const Messages: FC<MessagesProps> = ({
       pusherClient.unbind("incoming_message", messageHandler);
     };
   }, [chatId]);
+
+  const deleteMessage = async () => {
+    try {
+      await axios.post("/api/message/delete");
+    } catch (err) {
+      console.log(err)
+    }
+  };
+
   return (
     <div
       id="messages"
