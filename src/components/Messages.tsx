@@ -58,7 +58,7 @@ const Messages: FC<MessagesProps> = ({
     try {
       await axios.post("/api/message/delete", { chatId, message });
     } catch (err) {
-      console.error("Error deleting message", err);
+      console.error("Error deleting message", err)
     }
   };
 
@@ -86,7 +86,7 @@ const Messages: FC<MessagesProps> = ({
             key={`${message.id}-${message.timestamp}`}
             className="chat-message"
           >
-            {isLastMessageOfDay && (
+              {isLastMessageOfDay && (
               <div className="text-center text-[0.75rem] sm:text-sm my-3 text-gray-600">
                 {isToday(new Date(message.timestamp))
                   ? "Today"
@@ -104,36 +104,31 @@ const Messages: FC<MessagesProps> = ({
                 })}
               >
                 <div
-                  key={message.id}
-                  className={cn(
-                    "px-2 py-1 max-w-44 sm:max-w-xs md:max-w-sm text-sm sm:text-base rounded-lg inline-block shadow-md break-words",
-                    {
-                      "bg-cyan-500 text-white":
-                        isCurrentUser && message.text !== "Deleted message",
-                      "bg-gray-100 text-gray-800":
-                        !isCurrentUser && message.text !== "Deleted message",
-                      "bg-red-100 text-red-600":
-                        message.text === "Deleted message",
-                      "rounded-br-none":
-                        !subsequentUserMessages && isCurrentUser,
-                      "rounded-bl-none":
-                        !subsequentUserMessages && !isCurrentUser,
-                    }
-                  )}
-                >
-                  <p className="pb-0.5 pr-3">{message.text}</p>
-                  <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
-                    {formatTimestamp(message.timestamp)}
-                  </span>
-                  {message.text !== "Deleted message" && (
-                    <button
-                      className="text-xs"
-                      onClick={() => deleteMessage(message)}
-                    >
-                      Delete
-                    </button>
-                  )}
-                </div>
+          key={message.id}
+          className={cn(
+            "relative px-2 py-1 max-w-44 sm:max-w-xs md:max-w-sm text-sm sm:text-base rounded-lg inline-block shadow-md break-words",
+            {
+              "bg-cyan-500 text-white": isCurrentUser && message.text !== "Deleted message",
+              "bg-gray-100 text-gray-800": !isCurrentUser && message.text !== "Deleted message",
+              "bg-red-100 text-red-600": message.text === "Deleted message",
+              "rounded-br-none": !subsequentUserMessages && isCurrentUser,
+              "rounded-bl-none": !subsequentUserMessages && !isCurrentUser,
+            }
+          )}
+        >
+          {message.text !== "Deleted message" && (
+            <button
+              className="absolute top-1 right-1 text-xs text-red-500 hover:text-red-700"
+              onClick={() => deleteMessage(message)}
+            >
+              ✖
+            </button>
+          )}
+          <p className="pb-0.5 pr-3">{message.text}</p>
+          <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
+            {formatTimestamp(message.timestamp)}
+          </span>
+        </div>
               </div>
               <div
                 className={cn("relative w-6 h-6", {
