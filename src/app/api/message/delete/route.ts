@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
-  const { chatId, message }: { chatId: string; message: string } =
+  const { chatId, message }: { chatId: string; message: Message } =
     await req.json();
 
   const session = await getServerSession(authOptions);
