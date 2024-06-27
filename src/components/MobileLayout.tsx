@@ -104,10 +104,21 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                       </div>
                     </TransitionChild>
                     <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg pt-6 pb-3">
-                      <div className="px-4 sm:px-6">
-                        <DialogTitle className="text-base font-semibold leading-6 text-gray-900">
-                          Menu
-                        </DialogTitle>
+                      <div className="px-4 sm:px-6 flex flex-row items-center">
+                        <Link
+                          href="/dashboard"
+                          className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out hover:bg-cyan-100 hover:text-cyan-700 rounded-lg hover:shadow-md"
+                        >
+                          <div className="relative w-9 h-9">
+                            <Icons.Logo />
+                          </div>
+                          <h1 className="text-md font-bold text-cyan-600">
+                            Babble
+                          </h1>
+                        </Link>
+                        <div className="ml-auto">
+                          <ProfileLink session={session} />
+                        </div>
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6 flex flex-col">
                         {/* Sidebar content */}
@@ -146,10 +157,6 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                                   />
                                 </li>
                               </ul>
-                            </li>
-
-                            <li className="mt-auto flex items-center">
-                              <ProfileLink session={session} />
                             </li>
                           </ul>
                           <div className="flex items-center justify-end">
