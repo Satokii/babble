@@ -124,13 +124,13 @@ const Messages: FC<MessagesProps> = ({
                 >
                   {isCurrentUser && message.text !== "Deleted message" && (
                     <button
-                      className="absolute top-1 right-1 text-xs text-red-500 hover:text-red-700"
+                      className="absolute top-2 right-2 text-xs text-red-500 hover:text-red-700"
                       onClick={() => deleteMessage(message)}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
                     </button>
                   )}
-                  <p className="pb-0.5 pr-3">{message.text}</p>
+                  <p className="pb-0.5 pr-4">{message.text}</p>
                   <span className="text-[0.6rem] sm:text-xs text-gray-600 flex justify-end">
                     {formatTimestamp(message.timestamp)}
                   </span>
