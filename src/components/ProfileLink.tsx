@@ -11,9 +11,9 @@ const ProfileLink: FC<ProfileLinkProps> = ({ session }) => {
   return (
     <Link
       href="/dashboard/profile"
-      className="flex items-center p-1 mr-2 transition rounded-full duration-300 ease-in-out hover:bg-cyan-200 hover:shadow-lg"
+      className="flex items-center p-1 mr-2 rounded-full transition duration-300 ease-in-out hover:scale-105 hover:bg-cyan-100"
     >
-      <div className="relative h-12 w-12 rounded-full duration-300 ease-in-out border border-cyan-100 hover:scale-110">
+      <div className="relative h-12 w-12 rounded-full border border-cyan-100">
         <Image
           fill
           referrerPolicy="no-referrer"
