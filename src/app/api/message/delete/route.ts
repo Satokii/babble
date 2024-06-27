@@ -14,4 +14,5 @@ export async function POST(req: Request) {
     // await db.del(`chat:${chatId}:messages`);
     
  console.log("message deleted")
+ return new Response("Message deleted")
 }
