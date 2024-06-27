@@ -40,7 +40,7 @@ const Layout = async ({ children }: LayoutProps) => {
         <div className="flex items-center">
           <Link
             href="/dashboard"
-            className="flex items-center justify-center h-16 gap-2 transition duration-300 ease-in-out hover:bg-cyan-100 hover:text-cyan-700 rounded-lg hover:shadow-md"
+            className="flex items-center justify-center h-16 py-2 px-3 gap-2 transition duration-300 ease-in-out hover:bg-cyan-100 hover:text-cyan-700 rounded-lg hover:shadow-md"
           >
             <div className="relative w-12 h-12">
               <Icons.Logo />
