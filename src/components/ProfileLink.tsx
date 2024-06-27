@@ -23,14 +23,6 @@ const ProfileLink: FC<ProfileLinkProps> = ({ session }) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-
-      <span className="sr-only">Profile</span>
-      <div className="flex flex-col">
-        <span aria-hidden="true">{session.user.name}</span>
-        <span className="text-xs text-gray-500" aria-hidden="true">
-          {session.user.email}
-        </span>
-      </div>
     </Link>
   );
 };
