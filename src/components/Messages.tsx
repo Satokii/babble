@@ -7,6 +7,8 @@ import { format, isSameDay } from "date-fns";
 import Image from "next/image";
 import { pusherClient } from "@/lib/pusher";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface MessagesProps {
   existingMessages: Message[];
@@ -121,7 +123,7 @@ const Messages: FC<MessagesProps> = ({
               className="absolute top-1 right-1 text-xs text-red-500 hover:text-red-700"
               onClick={() => deleteMessage(message)}
             >
-              ✖
+              <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           )}
           <p className="pb-0.5 pr-3">{message.text}</p>
