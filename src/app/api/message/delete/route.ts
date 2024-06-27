@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
 
 export async function POST(req: Request) {
-    const { messageId }: { messageId: string } = await req.json();
+    const { chatId, message }: { chatId: string, message: string } = await req.json();
 
     const session = await getServerSession(authOptions);
 
@@ -11,7 +11,9 @@ export async function POST(req: Request) {
       return new Response("Unauthorized", { status: 401 });
     }
 
-    await db.zrem(`chat:${messageId}:messages`);
+    await db.zrem(`chat:${chatId}:messages`, message);
+
+    console.log("success")
     
  return new Response("Message deleted")
 }
