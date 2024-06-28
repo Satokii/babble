@@ -59,6 +59,7 @@ const Messages: FC<MessagesProps> = ({
   const deleteMessage = async (message: Message) => {
     try {
       await axios.post("/api/message/delete", { chatId, message });
+      location.reload()
     } catch (err) {
       console.error("Error deleting message", err);
     }
