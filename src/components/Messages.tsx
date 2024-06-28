@@ -8,7 +8,7 @@ import Image from "next/image";
 import { pusherClient } from "@/lib/pusher";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 interface MessagesProps {
   existingMessages: Message[];
@@ -27,6 +27,7 @@ const Messages: FC<MessagesProps> = ({
 }) => {
   const [messages, setMessages] = useState<Message[]>(existingMessages);
   const scrollDownRef = useRef<HTMLDivElement | null>(null);
+  const [isLoading, setIsLoading] = useState("");
 
   const formatTimestamp = (timestamp: number) => {
     return format(timestamp, "HH:mm");
@@ -57,11 +58,14 @@ const Messages: FC<MessagesProps> = ({
   }, [chatId]);
 
   const deleteMessage = async (message: Message) => {
+    setIsLoading(message.id);
     try {
       await axios.post("/api/message/delete", { chatId, message });
-      location.reload()
+      location.reload();
     } catch (err) {
       console.error("Error deleting message", err);
+    } finally {
+      setIsLoading("");
     }
   };
 
@@ -127,8 +131,13 @@ const Messages: FC<MessagesProps> = ({
                     <button
                       className="absolute top-2 right-2 text-xs text-red-500 hover:text-red-700"
                       onClick={() => deleteMessage(message)}
+                      disabled={isLoading === message.id}
                     >
-                      <FontAwesomeIcon icon={faTrashAlt} />
+                      {isLoading === message.id ? (
+                        <FontAwesomeIcon icon={faSpinner} spin />
+                      ) : (
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      )}
                     </button>
                   )}
                   <p className="pb-0.5 pr-4">{message.text}</p>
