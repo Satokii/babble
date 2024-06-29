@@ -16,7 +16,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ user, handleEdit }) => {
           width={120}
           height={120}
           referrerPolicy="no-referrer"
-          className="rounded-full border-4 border-gray-200"
+          className="rounded-full border-4 border-cyan-100"
           src={user.image || ""}
           alt="User profile picture"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
