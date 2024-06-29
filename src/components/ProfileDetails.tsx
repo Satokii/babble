@@ -25,8 +25,14 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="text-center">
-          <h2 className="text-xl font-bold text-gray-900">{user.name}</h2>
-          <p className="text-sm text-gray-600">{user.email}</p>
+          <div>
+            <h2>NAME</h2>
+            <p className="text-xl font-bold text-gray-900">{user.name}</p>
+          </div>
+          <div>
+            <h2>EMAIL</h2>
+            <p className="text-sm text-gray-600">{user.email}</p>
+          </div>
         </div>
         <button
           onClick={handleEdit}
