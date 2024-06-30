@@ -63,7 +63,7 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
         htmlFor="email"
         className="block px-1 text-sm sm:text-base font-medium text-center sm:text-start text-gray-700"
       >
-        Search by email:
+        Find by email:
       </label>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-y-3 sm:gap-4">
         <input
