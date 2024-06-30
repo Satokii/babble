@@ -66,32 +66,6 @@ const ProfileForm: FC<ProfileFormProps> = ({ user, closeForm }) => {
             alt="User profile picture"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <label
-            htmlFor="image"
-            className="absolute bottom-0 right-0 bg-cyan-500 p-2 rounded-full cursor-pointer text-white shadow-lg"
-          >
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              className="hidden"
-              {...register("image")}
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15.232 5.232l3.536 3.536M8 16v4h4M5.232 5.232a6 6 0 011.768-1.768m10.392 10.392a6 6 0 01-1.768 1.768M9 11h2m-2 2h.01m3.489 0h.01m.61-2.207a2.5 2.5 0 10-3.536 3.536 2.5 2.5 0 003.536-3.536z"
-              />
-            </svg>
-          </label>
         </div>
         <div className="w-full max-w-md space-y-4">
           <div>
