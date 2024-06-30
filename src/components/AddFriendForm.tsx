@@ -76,20 +76,20 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
           placeholder="example@email.com"
           {...register("email", { required: "Email is required" })}
         />
-        <Button
+        <button
           type="submit"
           className="mt-2 sm:mt-0 py-2 px-4 rounded-full bg-white text-cyan-600 text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
         >
           Add
-        </Button>
+        </button>
       </div>
       {errors.email && (
-        <p className="mt-4 text-sm text-center text-red-600">
+        <p className="mt-4 bg-red-500 bg-opacity-80 text-white text-center text-sm p-2 rounded-md">
           {errors.email.message}
         </p>
       )}
       {showSuccess && (
-        <p className="mt-4 text-sm text-center text-green-600">
+        <p className="mt-4 bg-green-500 bg-opacity-80 text-white text-center text-sm p-2 rounded-md">
           Friend request successfully sent.
         </p>
       )}
