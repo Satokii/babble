@@ -68,42 +68,43 @@ const FriendRequests: FC<FriendRequestsProps> = ({
 
   return (
     <>
-      {friendRequests.length === 0 ? (
-        <p className="text-sm text-zinc-500 text-center mt-6">
-          Nothing to see here
-        </p>
-      ) : (
-        friendRequests.map((request) => (
-          <div
-            key={request.senderId}
-            className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md transition transform hover:shadow-lg"
+  {friendRequests.length === 0 ? (
+    <p className="text-sm text-zinc-500 text-center mt-6">
+      Nothing to see here
+    </p>
+  ) : (
+    friendRequests.map((request) => (
+      <div
+        key={request.senderId}
+        className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-lg shadow-md transition transform hover:shadow-lg space-y-2 sm:space-y-0 sm:space-x-4"
+      >
+        <div className="flex items-center space-x-4">
+          <UserPlus className="text-cyan-600 w-6 h-6 sm:w-8 sm:h-8" />
+          <p className="font-medium text-sm sm:text-lg text-gray-700">
+            {request.senderEmail}
+          </p>
+        </div>
+        <div className="flex space-x-3">
+          <button
+            aria-label="accept friend"
+            className="w-6 h-6 sm:w-10 sm:h-10 bg-green-500 hover:bg-green-600 rounded-full transition duration-300 ease-in-out flex items-center justify-center hover:shadow-lg"
+            onClick={() => acceptFriendReq(request.senderId)}
           >
-            <div className="flex items-center space-x-4">
-              <UserPlus className="text-cyan-600 w-6 h-6 sm:w-8 sm:h-8" />
-              <p className="font-medium text-sm sm:text-lg text-gray-700">
-                {request.senderEmail}
-              </p>
-            </div>
-            <div className="flex space-x-3">
-              <button
-                aria-label="accept friend"
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 hover:bg-green-600 rounded-full transition duration-300 ease-in-out flex items-center justify-center hover:shadow-lg"
-                onClick={() => acceptFriendReq(request.senderId)}
-              >
-                <Check className="text-white w-4/5 h-4/5" />
-              </button>
-              <button
-                aria-label="deny friend"
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-red-500 hover:bg-red-600 rounded-full transition duration-300 ease-in-out flex items-center justify-center hover:shadow-lg"
-                onClick={() => rejectFriendReq(request.senderId)}
-              >
-                <X className="text-white w-4/5 h-4/5" />
-              </button>
-            </div>
-          </div>
-        ))
-      )}
-    </>
+            <Check className="text-white w-4/5 h-4/5" />
+          </button>
+          <button
+            aria-label="deny friend"
+            className="w-6 h-6 sm:w-10 sm:h-10 bg-red-500 hover:bg-red-600 rounded-full transition duration-300 ease-in-out flex items-center justify-center hover:shadow-lg"
+            onClick={() => rejectFriendReq(request.senderId)}
+          >
+            <X className="text-white w-4/5 h-4/5" />
+          </button>
+        </div>
+      </div>
+    ))
+  )}
+</>
+
   );
 };
 
