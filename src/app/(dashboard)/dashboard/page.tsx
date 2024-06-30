@@ -48,7 +48,7 @@ const Page = async ({}) => {
 
   return (
     <>
-      <div className="container mx-auto px-4 py-8 sm:py-12 bg-gradient-to-r from-cyan-200 to-teal-300 rounded-xl shadow-lg">
+      <div className="container mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:py-14 bg-gradient-to-br from-cyan-300 via-teal-400 to-blue-500 rounded-2xl shadow-xl transform transition-transform">
         <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl mb-8 text-center sm:text-left text-gray-800">
           Chats
         </h1>
