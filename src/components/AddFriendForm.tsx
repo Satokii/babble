@@ -56,7 +56,7 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
 
   return (
     <form
-      className="max-w-md w-full mx-auto p-6 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg rounded-xl"
+      className="max-w-md w-full mx-auto py-4 px-3 sm:p-6 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg rounded-xl"
       onSubmit={handleSubmit(submitData)}
     >
       <h2 className="text-2xl font-bold text-center text-white mb-6">
@@ -72,24 +72,24 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
         <input
           type="email"
           id="email"
-          className="flex-1 w-full rounded-full border border-transparent py-2 px-4 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:border-cyan-500 text-sm sm:text-base"
+          className="flex-1 w-full rounded-full border border-transparent py-2 px-2 sm:px-4 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:border-cyan-500 text-xs sm:text-base"
           placeholder="example@email.com"
           {...register("email", { required: "Email is required" })}
         />
         <button
           type="submit"
-          className="mt-2 sm:mt-0 py-2 px-4 rounded-full bg-white text-cyan-600 text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+          className="mt-2 sm:mt-0 py-2 px-4 rounded-full bg-white text-cyan-600 text-xs sm:text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
         >
           Add
         </button>
       </div>
       {errors.email && (
-        <p className="mt-4 bg-red-500 bg-opacity-80 text-white text-center text-sm p-2 rounded-md">
+        <p className="mt-4 bg-red-500 bg-opacity-80 text-white text-center sm:text-sm text-xs p-2 rounded-md">
           {errors.email.message}
         </p>
       )}
       {showSuccess && (
-        <p className="mt-4 bg-green-500 bg-opacity-80 text-white text-center text-sm p-2 rounded-md">
+        <p className="mt-4 bg-green-500 bg-opacity-80 text-white text-center sm:text-sm text-xs p-2 rounded-md">
           Friend request successfully sent.
         </p>
       )}
