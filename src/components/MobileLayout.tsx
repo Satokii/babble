@@ -54,7 +54,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
             <h1 className="text-md font-extrabold text-white">Babble</h1>
           </Link>
         </div>
-        <Button className="gap-4" onClick={() => setOpen(true)}>
+        <Button className="gap-4 bg-cyan-700 hover:bg-cyan-900" onClick={() => setOpen(true)}>
           Menu <Menu className="h-6 w-6" />
         </Button>
       </div>
