@@ -103,11 +103,12 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         </button>
                       </div>
                     </TransitionChild>
-                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-gray-100 to-gray-200 pt-6 pb-3">
-                      <div className="px-4 sm:px-6 flex flex-row items-center">
+                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll bg-gradient-to-r from-gray-100 to-gray-200 pb-3">
+                      <div className="flex w-full bg-gradient-to-r from-cyan-500 to-teal-500 shadow-lg p-4 items-center justify-between">
+                      <div className="flex items-center">
                         <Link
                           href="/dashboard"
-                          className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 bg-opacity-20 hover:bg-opacity-40"
+                          className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
                         >
                           <div className="relative w-9 h-9">
                             <Icons.Logo className="text-white" />
@@ -116,10 +117,9 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                             Babble
                           </h1>
                         </Link>
-                        <div className="ml-auto">
+                        </div>
                           <ProfileLink session={session} />
                         </div>
-                      </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6 flex flex-col">
                         {/* Sidebar content */}
 
