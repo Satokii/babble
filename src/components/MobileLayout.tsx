@@ -124,7 +124,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         {/* Sidebar content */}
 
                         {friends.length > 0 ? (
-                          <div className="text-xs font-semibold leading-6 text-cyan-600 mb-4">
+                          <div className="text-lg font-semibold leading-6 text-cyan-600 mb-4">
                             Chats
                           </div>
                         ) : null}
@@ -141,7 +141,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                             </li>
 
                             <li>
-                              <div className="text-xs font-semibold leading-6 text-cyan-600 mb-2">
+                              <div className="text-lg font-semibold leading-6 text-cyan-600 mb-2">
                                 Overview
                               </div>
 
