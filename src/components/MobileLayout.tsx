@@ -41,7 +41,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
   }, [pathname]);
 
   return (
-    <div className="fixed top-0 bg-gradient-to-r from-cyan-200 to-teal-300 border-b shadow-lg p-4 inset-x-0 py-1 px-3">
+    <div className="fixed top-0 bg-gradient-to-r  from-cyan-500 to-teal-500 border-b shadow-lg p-4 inset-x-0 py-1 px-3">
       <div className="flex h-16 w-full justify-between items-center px-1">
         <div className="max-w-xs">
           <Link
