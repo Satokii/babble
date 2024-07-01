@@ -103,11 +103,11 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         </button>
                       </div>
                     </TransitionChild>
-                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg pt-6 pb-3">
+                    <div className="flex h-full flex-col gap-y-4 rounded-md overflow-y-scroll  bg-gradient-to-r from-gray-100 to-gray-200 pt-6 pb-3">
                       <div className="px-4 sm:px-6 flex flex-row items-center">
                         <Link
                           href="/dashboard"
-                          className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
+                          className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 bg-opacity-20 hover:bg-opacity-40"
                         >
                           <div className="relative w-9 h-9">
                             <Icons.Logo className="text-white" />
@@ -124,7 +124,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                         {/* Sidebar content */}
 
                         {friends.length > 0 ? (
-                          <div className="text-xs font-semibold leading-6 text-gray-500">
+                          <div className="text-xs font-semibold leading-6 text-cyan-600 mb-4">
                             Chats
                           </div>
                         ) : null}
@@ -141,7 +141,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                             </li>
 
                             <li>
-                              <div className="text-xs font-semibold leading-6 text-gray-500">
+                              <div className="text-xs font-semibold leading-6 text-cyan-600 mb-2">
                                 Overview
                               </div>
 
