@@ -78,7 +78,7 @@ const Layout = async ({ children }: LayoutProps) => {
                 <div className="text-lg font-semibold text-cyan-600 mb-2">
                   Overview
                 </div>
-                <ul role="list" className="space-y-2">
+                <ul role="list" className="-mx-2 mt-2 space-y-2">
                   <li>
                     <AddFriendLink />
                   </li>
@@ -91,7 +91,7 @@ const Layout = async ({ children }: LayoutProps) => {
                 </ul>
               </li>
             </ul>
-            <div className="mt-6">
+            <div>
               <SignOutBtn />
             </div>
           </nav>

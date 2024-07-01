@@ -159,7 +159,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                               </ul>
                             </li>
                           </ul>
-                          <div className="flex items-center justify-end">
+                          <div>
                             <SignOutBtn />
                           </div>
                         </nav>
