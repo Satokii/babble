@@ -35,22 +35,23 @@ const Layout = async ({ children }: LayoutProps) => {
 
   return (
     <div className="w-full h-screen bg-gray-50 flex flex-col">
-      <header className="hidden md:flex w-full bg-gradient-to-r from-cyan-200 to-teal-300 shadow-lg p-4 items-center justify-between">
+      <header className="hidden md:flex w-full bg-gradient-to-r from-cyan-500 to-teal-500 shadow-lg p-4 items-center justify-between rounded-b-lg">
         <div className="flex items-center">
           <Link
             href="/dashboard"
-            className="flex items-center justify-center h-16 py-2 px-3 gap-2 transition duration-300 ease-in-out hover:bg-cyan-100 hover:text-cyan-700 rounded-lg hover:shadow-md"
+            className="flex items-center justify-center h-16 py-2 px-4 gap-3 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
           >
-            <div className="relative w-12 h-12">
-              <Icons.Logo />
+            <div className="relative w-10 h-10">
+              <Icons.Logo className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-cyan-600">Babble</h1>
+            <h1 className="text-3xl font-extrabold text-white">Babble</h1>
           </Link>
         </div>
         <div className="flex items-center gap-4">
           <ProfileLink session={session} />
         </div>
       </header>
+
       <div className="flex flex-1 overflow-hidden">
         <div className="md:hidden">
           <MobileLayout
