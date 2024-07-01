@@ -92,7 +92,7 @@ const Layout = async ({ children }: LayoutProps) => {
               </li>
             </ul>
             <div className="mt-6">
-              <SignOutBtn className="w-full py-2 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 transition duration-300 ease-in-out" />
+              <SignOutBtn />
             </div>
           </nav>
         </div>
