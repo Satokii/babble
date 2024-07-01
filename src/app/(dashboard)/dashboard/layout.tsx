@@ -76,7 +76,7 @@ const Layout = async ({ children }: LayoutProps) => {
               </li>
               <li>
                 <div className="text-lg font-semibold text-cyan-600 mb-2">
-                  Overview
+                  Friend Options
                 </div>
                 <ul role="list" className="-mx-2 mt-2 space-y-2">
                   <li>

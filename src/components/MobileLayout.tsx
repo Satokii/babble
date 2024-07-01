@@ -142,7 +142,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
 
                             <li>
                               <div className="text-lg font-semibold leading-6 text-cyan-600 mb-2">
-                                Overview
+                                Friend Options
                               </div>
 
                               <ul role="list" className="-mx-2 mt-2 space-y-2">
