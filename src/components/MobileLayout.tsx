@@ -4,7 +4,6 @@ import { FC, Fragment, useEffect, useState } from "react";
 import {
   Dialog,
   DialogPanel,
-  DialogTitle,
   Transition,
   TransitionChild,
 } from "@headlessui/react";
