@@ -14,6 +14,7 @@ type FormData = z.infer<typeof addFriendValidator>;
 
 const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -25,6 +26,7 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
   });
 
   const addFriend = async (email: string) => {
+    setIsLoading(true);
     try {
       const validatedEmail = addFriendValidator.parse({ email });
 
@@ -47,6 +49,8 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
       setError("email", {
         message: "Sorry, something went wrong. Please try again.",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -76,12 +80,13 @@ const AddFriendForm: FC<AddFriendFormProps> = ({}) => {
           placeholder="example@email.com"
           {...register("email", { required: "Email is required" })}
         />
-        <button
+        <Button
           type="submit"
+          isLoading={isLoading}
           className="mt-2 sm:mt-0 py-2 px-4 rounded-full bg-white text-cyan-600 text-xs sm:text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
         >
           Add
-        </button>
+        </Button>
       </div>
       {errors.email && (
         <p className="mt-4 bg-red-500 bg-opacity-80 text-white text-center sm:text-sm text-xs p-2 rounded-md">
