@@ -60,14 +60,14 @@ const Layout = async ({ children }: LayoutProps) => {
             friendReqCount={requestCount}
           />
         </div>
-        <div className="hidden md:flex flex-col h-full max-w-[16rem] gap-y-6 rounded-r-lg bg-gradient-to-r from-gray-100 to-gray-200 border-r shadow-lg px-5 pt-6 pb-4">
+        <div className="hidden md:flex flex-col h-full max-w-[16rem] rounded-r-lg bg-gradient-to-r from-gray-100 to-gray-200 border-r shadow-lg px-5 pt-6 pb-4">
           {friends.length > 0 && (
-            <div className="text-lg font-semibold text-cyan-600 mb-4">
+            <div className="text-lg font-semibold text-cyan-600 mb-3">
               Chats
             </div>
           )}
           <nav className="flex flex-1 flex-col">
-            <ul role="list" className="flex flex-1 flex-col gap-y-4">
+            <ul role="list" className="flex flex-1 flex-col gap-y-6">
               <li>
                 <SidebarChatList
                   friends={friends}
@@ -75,10 +75,10 @@ const Layout = async ({ children }: LayoutProps) => {
                 />
               </li>
               <li>
-                <div className="text-lg font-semibold text-cyan-600 mb-2">
+                <div className="text-lg font-semibold text-cyan-600 mb-3">
                   Friend Options
                 </div>
-                <ul role="list" className="-mx-2 mt-2 space-y-2">
+                <ul role="list" className="-mx-2 mt-2 space-y-1">
                   <li>
                     <AddFriendLink />
                   </li>
