@@ -96,7 +96,7 @@ const Layout = async ({ children }: LayoutProps) => {
             </div>
           </nav>
         </div>
-        <section className="flex-1 max-h-screen container mx-6 sm:mx-2 py-16 md:py-12 overflow-y-auto">
+        <section className="max-h-screen container my-6 sm:my-2 py-16 md:py-12 w-full overflow-y-auto">
           {children}
         </section>
       </div>
