@@ -60,15 +60,14 @@ const Layout = async ({ children }: LayoutProps) => {
             friendReqCount={requestCount}
           />
         </div>
-        <div className="hidden md:flex flex-col h-full max-w-[16rem] gap-y-6 rounded-md bg-gradient-to-r from-cyan-200 to-teal-300 border-r shadow-lg px-5 pt-4 pb-2">
-          {friends.length > 0 ? (
-            <div className="text-sm font-semibold leading-6 text-gray-500">
+        <div className="hidden md:flex flex-col h-full max-w-[16rem] gap-y-6 rounded-r-lg bg-gradient-to-r from-gray-100 to-gray-200 border-r shadow-lg px-5 pt-6 pb-4">
+          {friends.length > 0 && (
+            <div className="text-lg font-semibold text-cyan-600 mb-4">
               Chats
             </div>
-          ) : null}
-
-          <nav className="flex flex-1 flex-col flex-shrink-0">
-            <ul role="list" className="flex flex-1 flex-col gap-y-6">
+          )}
+          <nav className="flex flex-1 flex-col">
+            <ul role="list" className="flex flex-1 flex-col gap-y-4">
               <li>
                 <SidebarChatList
                   friends={friends}
@@ -76,10 +75,10 @@ const Layout = async ({ children }: LayoutProps) => {
                 />
               </li>
               <li>
-                <div className="text-sm font-semibold leading-6 text-gray-500">
+                <div className="text-lg font-semibold text-cyan-600 mb-2">
                   Overview
                 </div>
-                <ul role="list" className="-mx-2 mt-2 space-y-2">
+                <ul role="list" className="space-y-2">
                   <li>
                     <AddFriendLink />
                   </li>
@@ -92,12 +91,12 @@ const Layout = async ({ children }: LayoutProps) => {
                 </ul>
               </li>
             </ul>
-            <div className="flex items-center justify-end">
-              <SignOutBtn />
+            <div className="mt-6">
+              <SignOutBtn className="w-full py-2 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 transition duration-300 ease-in-out" />
             </div>
           </nav>
         </div>
-        <section className="max-h-screen container my-6 sm:my-2 py-16 md:py-12 w-full overflow-y-auto">
+        <section className="flex-1 max-h-screen container mx-6 sm:mx-2 py-16 md:py-12 overflow-y-auto">
           {children}
         </section>
       </div>
