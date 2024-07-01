@@ -13,7 +13,7 @@ const SignOutBtn: FC<SignOutBtnProps> = ({ ...props }) => {
   return (
     <Button
       {...props}
-      className="p-0 mt-1 h-min transition duration-300 ease-in-out hover:text-white gap-1"
+      className="w-full py-2 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 hover:text-gray-300 transition duration-300 ease-in-out"
       variant="ghost"
       onClick={async () => {
         setSignOutUser(true);
@@ -29,14 +29,10 @@ const SignOutBtn: FC<SignOutBtnProps> = ({ ...props }) => {
       {signOutUser ? (
         <>
           <Loader2 className="animate-spin h-4 w-4" />
-          <div className="text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:text-purple-400">
-            Log Out
-          </div>
+          <div>Log Out</div>
         </>
       ) : (
-        <div className="text-sm font-semibold text-gray-700 transition duration-300 ease-in-out hover:text-purple-400">
-          Log Out
-        </div>
+        <div>Log Out</div>
       )}
     </Button>
   );
