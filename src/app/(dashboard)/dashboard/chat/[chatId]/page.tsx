@@ -83,7 +83,7 @@ const page = async ({ params }: PageProps) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 p-3 sm:p-4 overflow-y-auto">
+      <div className="flex-1 p-4 sm:p-5 overflow-y-auto">
         <Messages
           existingMessages={existingMessages}
           sessionId={session.user.id}
