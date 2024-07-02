@@ -92,7 +92,7 @@ const page = async ({ params }: PageProps) => {
           chatId={chatId}
         />
       </div>
-      <div className="p-3 sm:p-4 bg-gray-100 border-t border-gray-200">
+      <div className="p-4 sm:p-5 bg-gray-200 border-t border-gray-300">
         <ChatTextBox chatFriend={chatFriend} chatId={chatId} />
       </div>
     </div>
