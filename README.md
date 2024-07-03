@@ -11,10 +11,11 @@ This is the first app I have developed using the Next.js framework as well as Ty
 - Fork this repository
 - Clone the forked repository to your local machine
 - In the root directory, run `npm ci` to install dependencies
+- Create a new project in the [Google Cloud Platform Console](https://console.cloud.google.com/)
 - Create a new Redis database on the [Upstash](https://upstash.com/docs/redis/overall/getstarted) platform
 - Create a new Channel on [Pusher](https://pusher.com/)
 - Rename the `.env.example` file to `.env.local`
-- In your `.env.local` file change add your relevant keys
+- In your `.env.local` file edit the variables to add your relevant keys
 - Finally use `npm run dev` to run the application in your browser
 
 ## Features
