@@ -16,3 +16,16 @@ This is the first app I have developed using the Next.js framework as well as Ty
 - Rename the `.env.example` file to `.env.local`
 - In your `.env.local` file change add your relevant keys
 - Finally use `npm run dev` to run the application in your browser
+
+## Features
+
+- Sign up/Sign In
+- Sign out
+- Google OAuth
+- Send friend requests
+- Accept/decline friend requests
+- Send instant messages to friends
+- Real-time updates when sending friend requests and messages
+- Delete messages
+- View details in your profile
+- Update profile details
