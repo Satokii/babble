@@ -30,3 +30,9 @@ This is the first app I have developed using the Next.js framework as well as Ty
 - Delete messages
 - View details in your profile
 - Update profile details
+
+## Image Gallery
+
+### Sign In Page
+<img src = https://github.com/Satokii/chat-app/assets/125318469/6cc68f29-e218-4864-bee0-656298d269ac width = 90% >
+<br/>
