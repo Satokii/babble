@@ -60,7 +60,7 @@ const Page = async ({}) => {
           friendsLastSentMessage.map((friend) => (
             <div
               key={friend.id}
-              className="relative bg-white border border-gray-200 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow mb-4"
+              className="relative bg-white border border-gray-200 p-4 rounded-lg shadow-sm hover:bg-gray-100 hover:shadow-md transition-shadow mb-4"
             >
               <Link
                 href={`/dashboard/chat/${chatHrefConstructor(
