@@ -1,4 +1,3 @@
-import { Icons } from "@/components/Icons";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
@@ -12,6 +11,7 @@ import SidebarChatList from "@/components/SidebarChatList";
 import MobileLayout from "@/components/MobileLayout";
 import AddFriendLink from "@/components/AddFriendLink";
 import ProfileLink from "@/components/ProfileLink";
+import Logo from "@/components/Logo";
 
 interface LayoutProps {
   children: ReactNode;
@@ -42,7 +42,7 @@ const Layout = async ({ children }: LayoutProps) => {
             className="flex items-center justify-center h-16 py-2 px-4 gap-3 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
           >
             <div className="relative w-10 h-10">
-              <Icons.Logo className="text-white" />
+              <Logo />
             </div>
             <h1 className="text-3xl font-extrabold text-white">Babble</h1>
           </Link>
