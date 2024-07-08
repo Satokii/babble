@@ -9,16 +9,15 @@ import {
 } from "@headlessui/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import Button, { buttonVariants } from "./ui/Button";
-import { Icons } from "./Icons";
+import Button from "./ui/Button";
 import SidebarChatList from "./SidebarChatList";
 import { Session } from "next-auth";
 import FriendRequestLink from "./FriendRequestLink";
-import Image from "next/image";
 import SignOutBtn from "./SignOutBtn";
 import { usePathname } from "next/navigation";
 import AddFriendLink from "./AddFriendLink";
 import ProfileLink from "./ProfileLink";
+import Logo from "./Logo";
 
 interface MobileLayoutProps {
   friends: User[];
@@ -48,7 +47,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
             className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
           >
             <div className="relative w-9 h-9">
-              <Icons.Logo className="text-white" />
+              <Logo />
             </div>
             <h1 className="text-md font-extrabold text-white">Babble</h1>
           </Link>
@@ -110,7 +109,7 @@ const MobileLayout: FC<MobileLayoutProps> = ({
                           className="flex items-center justify-center gap-1 px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-full bg-white bg-opacity-20 hover:bg-opacity-40"
                         >
                           <div className="relative w-9 h-9">
-                            <Icons.Logo className="text-white" />
+                            <Logo />
                           </div>
                           <h1 className="text-md font-extrabold text-white">
                             Babble
