@@ -41,3 +41,7 @@ This is the first app I have developed using the Next.js framework as well as Ty
 <img src = https://github.com/Satokii/chat-app/assets/125318469/7f7a5f67-0071-44ab-b000-db0d9f77a1c4 width = 90% >
 <br/>
 
+### Dashboard Page
+<img src = https://github.com/Satokii/chat-app/assets/125318469/fffea20b-1978-4bd9-b5ae-bf1345488add width = 90% >
+<br/>
+
