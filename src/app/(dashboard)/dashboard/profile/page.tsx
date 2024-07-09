@@ -3,12 +3,8 @@ import { authOptions } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import Profile from "@/components/Profile";
 import { FC } from "react";
-
-  interface ProfilePageProps {
-    user: User;
-  }
   
-  const ProfilePage: FC<ProfilePageProps> = async () => {
+  const ProfilePage: FC = async () => {
     const session = await getServerSession(authOptions);
 
     if (!session) {
