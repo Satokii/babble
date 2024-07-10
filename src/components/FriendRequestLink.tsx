@@ -15,7 +15,7 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
   sessionId,
   INITIAL_COUNT,
 }) => {
-  const [requestCount, setRequestCount] = useState(INITIAL_COUNT);
+  const [requestCount, setRequestCount] = useState<number>(INITIAL_COUNT);
 
   useEffect(() => {
     pusherClient.subscribe(
