@@ -21,7 +21,7 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
     pusherClient.subscribe(
       toPusherKey(`user:${sessionId}:incoming_friend_requests`)
     );
-    pusherClient.subscribe(toPusherKey(`user:${sessionId}: friends`));
+    pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
     const friendRequestAddCount = () => {
       setRequestCount((prevReqs) => prevReqs + 1);
@@ -38,7 +38,7 @@ const FriendRequestMenu: FC<FriendRequestMenuProps> = ({
       pusherClient.unsubscribe(
         toPusherKey(`user:${sessionId}:incoming_friend_requests`)
       );
-      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}: friends`));
+      pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
 
       pusherClient.unbind("incoming_friend_requests", friendRequestAddCount);
       pusherClient.unbind("new_friend", friendRequestMinusCount);
