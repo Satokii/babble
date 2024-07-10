@@ -50,17 +50,19 @@ export async function POST(req: Request) {
     const user = JSON.parse(userData) as User;
     const friend = JSON.parse(friendData) as User;
 
+    await pusherServer.trigger(
+      toPusherKey(`user:${idToAdd}:friends`),
+      "new_friend",
+      user
+    );
+
+    await pusherServer.trigger(
+      toPusherKey(`user:${session.user.id}:friends`),
+      "new_friend",
+      friend
+    );
+
     await Promise.all([
-      pusherServer.trigger(
-        toPusherKey(`user:${idToAdd}:friends`),
-        "new_friend",
-        user
-      ),
-      pusherServer.trigger(
-        toPusherKey(`user:${session.user.id}:friends`),
-        "new_friend",
-        friend
-      ),
       // ADD FRIEND TO CURRENT USER FRIEND LIST
       db.sadd(`user:${session.user.id}:friends`, idToAdd),
       // ADD USER TO FRIEND'S FRIEND LIST
