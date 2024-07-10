@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const friendList = (await fetchRedis(
       "smembers",
       `user:${session.user.id}:friends`
-    )) as string;
+    )) as string[];
     const isFriend = friendList.includes(friendId);
 
     if (!isFriend) {
@@ -51,13 +51,13 @@ export async function POST(req: Request) {
 
     const message = messageSchema.parse(messageData);
 
-    pusherServer.trigger(
+    await pusherServer.trigger(
       toPusherKey(`chat:${chatId}`),
       "incoming_message",
       message
     );
 
-    pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), "new_message", {
+    await pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), "new_message", {
       ...message,
       senderImage: sender.image,
       senderName: sender.name,
